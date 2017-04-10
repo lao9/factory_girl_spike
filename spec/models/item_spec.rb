@@ -9,4 +9,10 @@ RSpec.describe Item, type: :model do
     expect(item).to respond_to(:image_url)
     expect(item).to respond_to(:price)
   end
+
+  it "has categories" do
+    item = create(:item_with_categories)
+    expect(item).to respond_to(:categories)
+    expect(item.categories.count).to eq(2)
+  end
 end

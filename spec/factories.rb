@@ -16,6 +16,20 @@ FactoryGirl.define do
     sequence :price do |n|
       n.to_f
     end
+
+    factory :item_with_categories do
+      categories {create_list(:category, 2)}
+    end
+  end
+
+  factory :category do
+    sequence :name do |n|
+      "category#{n}"
+    end
+
+    factory :category_with_items do
+      items {create_list(:item, 2)}
+    end
   end
 
 end

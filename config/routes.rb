@@ -3,10 +3,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index]
 
-  # resources :carts, only: [:index]
-
   resource :cart, only: [:show, :create, :update]
-  # custom /cart => cart#show
 
 
   #STAY DOWN

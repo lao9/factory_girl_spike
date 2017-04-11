@@ -10,7 +10,7 @@ RSpec.describe Item, type: :model do
     expect(item).to respond_to(:price)
   end
 
-  it "has categories" do
+  it "has many categories" do
     item = create(:item_with_categories)
     expect(item).to respond_to(:categories)
     expect(item.categories.count).to eq(2)

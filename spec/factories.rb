@@ -19,7 +19,7 @@ FactoryGirl.define do
 
     factory :item_with_categories do
       categories {create_list(:category, 2)}
-    end
+    end 
   end
 
   factory :category do

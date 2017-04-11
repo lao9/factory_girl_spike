@@ -6,7 +6,4 @@ class OrderItem
     @quantity = quantity
     @subtotal = quantity * item.price
   end
-
-
-
 end

@@ -8,7 +8,7 @@ RSpec.feature "Vistor can remove item from cart" do
     click_on "View Cart"
 
     click_on "Remove"
-    expect(current_path).to eq(carts_path)
+    expect(current_path).to eq(cart_path)
     expect(page).to have_content ("Successfully removed")
     expect(page).to have_link (item_path(item))
     expect(page).to_not have_content(item.description)

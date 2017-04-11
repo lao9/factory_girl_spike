@@ -6,9 +6,10 @@ RSpec.feature "User can add items to cart" do
       item = create(:item)
       visit items_path
       click_on "Add to Cart"
+      expect(page).to have_content("Successfully added #{item.title} to your cart")
       click_on "View Cart"
 
-      expect(current_path).to eq("/carts")
+      expect(current_path).to eq("/cart")
       expect(page).to have_content(item.title)
       expect(page).to have_content(item.description)
       expect(page).to have_content(item.price)

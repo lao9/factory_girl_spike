@@ -1,18 +1,11 @@
 Rails.application.routes.draw do
+  root to: 'items#index'
 
   resources :items, only: [:index, :show]
 
-  resources :carts, only: [:index, :create]
-  put '/carts/remove', :to => 'carts#remove'
+  put '/cart/remove', :to => 'carts#remove'
 
-
-
-
-
-
-
-
-
+  resource :cart, only: [:show, :create, :update]
 
   #STAY DOWN
   get "/:category_name", to: "categories#show"

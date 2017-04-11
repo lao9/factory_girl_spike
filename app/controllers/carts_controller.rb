@@ -9,20 +9,14 @@ class CartsController < ApplicationController
     redirect_to(request.referer)
   end
 
-  def index
-
+  def show
     @cart = Cart.new(session[:cart])
-
     @order_items = @cart.list
-
-    # binding.pry
-    # @items =
-    # Item.find(session[:cart][]
   end
 
-  # session[:return_to] ||= request.referer
-  # Then redirect to it in your update action, after a successful save:
-  #
-  # redirect_to session.delete(:return_to)
+  def update
+    @cart.update(params[:item_id], params[:cart][:quantity])
+    redirect_to cart_path
+  end
 
 end

@@ -12,6 +12,10 @@ class Cart
     contents[item_id.to_s] += 1
   end
 
+  def update(item_id, new_quantity)
+    contents[item_id.to_s] = new_quantity.to_i
+  end
+
   def list
     contents.map { |item_id, quantity| OrderItem.new(Item.find(item_id), quantity) }
   end
@@ -28,7 +32,5 @@ class Cart
       sum + order_item.quantity
     end
   end
-
-
 
 end

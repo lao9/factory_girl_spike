@@ -5,22 +5,26 @@ RSpec.feature "User can add items to cart" do
     scenario "user can add items to cart from index" do
       item = create(:item)
       visit items_path
-      # save_and_open_page
+
       click_on "Add to Cart"
       expect(page).to have_content("Successfully added #{item.title} to your cart")
       click_on "View Cart"
 
-      expect(current_path).to eq("/carts")
+      expect(current_path).to eq("/cart")
       expect(page).to have_content(item.title)
       expect(page).to have_content(item.description)
       expect(page).to have_content(item.price)
       expect(page).to have_css("img[src*='#{item.image_url}']")
       expect(page).to have_content("Total Price: $#{item.price}")
       expect(page).to have_content("Total Quantity: 1")
-      save_and_open_page
     end
   end
 end
+
+# edge cases
+# two different items to the cart
+# add one item to the cart and confirm that when we go back and add
+# maybe also add a flash meesage "you added this to your cart"
 
   # issueFour:
   #   title: Adding items to the cart

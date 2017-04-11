@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show, :create, :update]
 
-
   #STAY DOWN
   get "/:category_name", to: "categories#show"
 end

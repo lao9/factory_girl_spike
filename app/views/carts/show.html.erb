@@ -21,8 +21,8 @@
       $<%= order_item.item.price %>
     </td>
     <td>
-      <%= form_for :cart, url: cart_path(order_item.item.id), method: :put do |f| %>
-      <%= f.text_field :quantity, value: order_item.quantity %>
+      <%= form_for :cart, url: cart_path(item_id: order_item.item.id), method: :put do |f| %>
+      <%= f.number_field :quantity, min: 1, value: order_item.quantity %>
       <%= f.submit "Update" %>
       <% end %>
     </td>

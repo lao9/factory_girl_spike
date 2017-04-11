@@ -1,12 +1,39 @@
+<h1>Your Cart</h1>
 
-<% @order_items.each do |order_item| %>
-  Item: <%= order_item.item.title %>
-  Description: <%= order_item.item.description %>
-  <img src="<%=order_item.item.image_url%>" alt="<%=order_item.item.title%>">
-  Quantity: <%= order_item.quantity %>
-  $<%= order_item.item.price %>
-  <%= order_item.subtotal %>
-<% end %>
+
+<table class=table>
+  <tr>
+    <th></th>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>
+  </tr>
+  <% @order_items.each do |order_item| %>
+  <tr>
+    <td>
+      <img src="<%=order_item.item.image_url%>" width="100" alt="<%=order_item.item.title%>">
+    </td>
+    <td>
+      <h3><%= order_item.item.title %></h3>
+      Description: <%= order_item.item.description %>
+    </td>
+    <td>
+      $<%= order_item.item.price %>
+    </td>
+    <td>
+      <%= form_for :cart, url: cart_path(order_item.item.id), method: :put do |f| %>
+      <%= f.text_field :quantity, value: order_item.quantity %>
+      <%= f.submit "Update" %>
+      <% end %>
+    </td>
+    <td>
+      <%= order_item.subtotal %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+
 
 Total Price: $<%= @cart.cart_total %>
 Total Quantity: <%= @cart.cart_quantity %>

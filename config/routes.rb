@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :items, only: [:index]
-  # resources :categories, only: [:show]
+  resources :items, only: [:index, :show]
 
   resources :carts, only: [:index, :create]
+  put '/carts/remove', :to => 'carts#remove'
 
 
 

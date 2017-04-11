@@ -9,19 +9,18 @@ class CartsController < ApplicationController
   end
 
   def index
-
     @cart = Cart.new(session[:cart])
-
     @order_items = @cart.list
-
-    # binding.pry
-    # @items =
-    # Item.find(session[:cart][]
   end
 
-  # session[:return_to] ||= request.referer
-  # Then redirect to it in your update action, after a successful save:
-  #
-  # redirect_to session.delete(:return_to)
+  def remove
+    @item = Item.find(params[:item_id])
+    @cart = Cart.new(session[:cart])
+    @cart.remove_item(params[:item_id])
+    @cart.contents.delete_if { |k, v| v == 0 }
 
+    flash[:success] = "Successfully removed #{view_context.link_to(@item.title, @item)} from your cart.".html_safe
+
+    redirect_to carts_path
+  end
 end

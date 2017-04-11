@@ -1,0 +1,8 @@
+
+<h1><%= @item.title %></h1>
+<p> <%= @item.description %> </p>
+<p> <%= @item.price %> </p>
+<img src="<%=@item.image_url%>" alt="<%=@item.title%>">
+
+<%= button_to "View Cart", carts_path, method: :get %>
+<%= button_to "Add to Cart", carts_path, params: {item_id: @item.id} %>

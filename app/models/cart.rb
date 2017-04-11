@@ -12,6 +12,10 @@ class Cart
     contents[item_id.to_s] += 1
   end
 
+  def remove_item(item_id)
+    contents[item_id.to_s] -= 1
+  end
+
   def list
     contents.map { |item_id, quantity| OrderItem.new(Item.find(item_id), quantity) }
   end
@@ -22,13 +26,9 @@ class Cart
     end
   end
 
-
   def cart_quantity
     list.reduce(0) do |sum, order_item|
       sum + order_item.quantity
     end
   end
-
-
-
 end

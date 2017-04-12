@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
 
   def index
-    # byebug
     @orders = Order.where(user_id: current_user.id)
   end
 
@@ -15,7 +14,4 @@ class OrdersController < ApplicationController
     @order= Order.find(params[:id])
     @order_items = @order.order_items
   end
-
-
-
 end

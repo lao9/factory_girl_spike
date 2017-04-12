@@ -43,7 +43,6 @@ RSpec.feature "Viewing past orders" do
       expect(page).to have_content("2")
       expect(page).to have_content("3")
     end
-
   end
 
 
@@ -99,5 +98,4 @@ RSpec.feature "Viewing past orders" do
       expect(page).to_not have_content("3")
     end
   end
-
 end

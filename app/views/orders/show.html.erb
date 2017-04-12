@@ -15,7 +15,7 @@
       <img src="<%=order_item.item.image_url%>" width="100" alt="<%=order_item.item.title%>">
     </td>
     <td>
-      <h3><%= order_item.item.title %></h3>
+      <h3><%= link_to order_item.item.title, item_path(order_item.item) %></h3>
       Description: <%= order_item.item.description %>
     </td>
     <td>
@@ -28,10 +28,12 @@
     <td>
       $<%= order_item.subtotal %>
     </td>
+
   </tr>
   <% end %>
 </table>
 
 
+Purchase Date: <%= @order.order_date %>
 Total Price: $<%= @cart.cart_total %>
 Total Quantity: <%= @cart.cart_quantity %>

@@ -61,10 +61,17 @@
               </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "#" do %><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <% end %>
-            <li><%= link_to "#" do %><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          <% end %>
+            <% if current_user %>
+              <li><%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-user"></span> <%= "#{current_user.full_name}" %></a></li>
+              <% end %>
+              <li><%= link_to "#" do %><span class="glyphicon glyphicon-log-ing"></span> Logout</a></li>
+              <% end %>
+            <% else %>
+              <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <% end %>
+              <li><%= link_to login_path do %><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <% end %>
+            <% end %>
             <li><%= link_to cart_path do %>
               View Cart
               <span class="glyphicon glyphicon-shopping-cart"></span>

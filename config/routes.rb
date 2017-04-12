@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   root to: 'items#index'
-  # And I should be on the "/login" page
-  # Then my current page should be "/dashboard"
-  resources :users, only: [:new] #, :create, :show]
+
   get '/login', to: 'sessions#new'
-  # post '/login', to: 'sessions#create'
+  post '/login', to: 'sessions#create'
+
+  # Then my current page should be "/dashboard"
+  resources :users, only: [:new, :create]
+
+  get '/dashboard', to: 'users#show', as: 'user'
+
   # delete '/logout', to: 'sessions#destroy'
 
   resources :items, only: [:index, :show]

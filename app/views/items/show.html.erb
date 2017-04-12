@@ -1,6 +1,8 @@
-<h1><%= @item.title %></h1>
-<p> <%= @item.description %> </p>
-<p> <%= @item.price %> </p>
-<img src="<%=@item.image_url%>" alt="<%=@item.title%>">
+<div class="pickle" id="pickle_<%=@item.id%>">
+  <h1><%= @item.title %></h1>
+  <p> <%= @item.description %> </p>
+  <p> <%= @item.price %> </p>
+  <img src="<%=@item.image_url%>" alt="<%=@item.title%>">
 
-<%= button_to "Add to Cart", cart_path, params: {item_id: @item.id} %>
+  <%= button_to "Add to Cart", cart_path, params: {item_id: @item.id} %>
+</div>

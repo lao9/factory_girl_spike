@@ -5,7 +5,7 @@ class CartsController < ApplicationController
     @cart = Cart.new(session[:cart])
     @cart.add_item(item.id)
     session[:cart] = @cart.contents
-    flash[:success] = "Successfully added #{item.title} to your cart"
+    flash[:success] = "Successfully added #{item.title} to your cart!"
     redirect_to(request.referer)
   end
 
@@ -17,11 +17,9 @@ class CartsController < ApplicationController
 
   def remove
     @item = Item.find(params[:item_id])
-    @cart = Cart.new(session[:cart])
-    @cart.remove_item(params[:item_id])
-    @cart.contents.delete_if { |k, v| v == 0 }
+    @cart.contents.delete(params[:item_id])
 
-    flash[:success] = "Successfully removed <a href='/item/#{@item.id}' > #{@item.title}</a> from your cart.".html_safe
+    flash[:success] = "Successfully removed <a href='/items/#{@item.id}' > #{@item.title}</a> from your cart.".html_safe
     redirect_to cart_path
   end
 

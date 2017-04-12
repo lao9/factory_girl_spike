@@ -21,7 +21,11 @@ class Cart
   end
 
   def list
-    contents.map { |item_id, quantity| OrderItem.new(Item.find(item_id), quantity) }
+    # contents.map { |item_id, quantity| OrderItem.new(Item.find(item_id), quantity) }
+    contents.map do |item_id, quantity|
+      OrderItem.new(item_id: item_id, quantity: quantity, subtotal: (quantity * Item.find(item_id).price))
+    end
+    
   end
 
   def cart_total

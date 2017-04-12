@@ -11,6 +11,12 @@ require 'support/factory_girl'
 
 DatabaseCleaner.strategy = :truncation
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
 
 RSpec.configure do |c|
   c.before(:all) do

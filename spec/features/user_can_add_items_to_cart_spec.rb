@@ -5,7 +5,6 @@ RSpec.feature "User can add items to cart" do
     scenario "user can add items to cart from index" do
       item = create(:item)
       visit items_path
-
       click_on "Add to Cart"
       expect(page).to have_content("Successfully added #{item.title} to your cart")
       click_on "View Cart"

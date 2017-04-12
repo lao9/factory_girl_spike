@@ -7,5 +7,5 @@
     <p> <%= item.price %> </p>
     <img src="<%=item.image_url%>" alt="<%=item.title%>">
     <%= button_to "Add to Cart", cart_path, params: {item_id: item.id} %>
-</div>
+  </div>
 <% end %>

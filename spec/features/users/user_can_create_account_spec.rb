@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 RSpec.feature "User can create a new account" do
+  context "when using the navbar" do
+    scenario "user is directed to sign up page from navbar" do
+      visit root
+
+      click_on "Sign Up"
+
+      expect(current_path).to eq(new_user_path)
+    end
+  end
   context "when providing all information" do
     scenario "they are logged in successfully" do
 
@@ -49,23 +58,3 @@ RSpec.feature "User can create a new account" do
     # might be something we can force in the form for
   end
 end
-
-#   body: >
-# As a visitor
-# When I visit "/"
-# Then I should see a link for "Login"
-# And when I click "Login"
-# And I should be on the "/login" page
-# I should see a place to insert my credentials to login
-# And I should see a link to "Create Account"
-#
-# As a visitor
-# When I visit "/login
-# And when I click link "Create Account"
-# And I fill in my desired credentials
-# And I submit my information
-# Then my current page should be "/dashboard"
-# And I should see a message in the navbar that says "Logged in as SOME_USER"
-# And I should see my profile information
-# And I should not see a link for "Login"
-# And I should see a link for "Logout"

@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
 
+  delete '/logout', to: 'sessions#destroy'
   # Then my current page should be "/dashboard"
   resources :users, only: [:new, :create]
 
   get '/dashboard', to: 'users#show', as: 'user'
 
-  # delete '/logout', to: 'sessions#destroy'
 
   resources :items, only: [:index, :show]
 

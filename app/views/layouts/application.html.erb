@@ -64,7 +64,7 @@
             <% if current_user %>
               <li><%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-user"></span> <%= "#{current_user.full_name}" %></a></li>
               <% end %>
-              <li><%= link_to "#" do %><span class="glyphicon glyphicon-log-ing"></span> Logout</a></li>
+              <li><%= link_to logout_path, method: :delete do %><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
               <% end %>
             <% else %>
               <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

@@ -12,6 +12,10 @@ class Cart
     contents[item_id.to_s] += 1
   end
 
+  def remove_item(item_id)
+    contents[item_id.to_s] -= 1
+  end
+
   def update(item_id, new_quantity)
     contents[item_id.to_s] = new_quantity.to_i
   end
@@ -25,7 +29,6 @@ class Cart
       sum + order_item.subtotal
     end
   end
-
 
   def cart_quantity
     list.reduce(0) do |sum, order_item|

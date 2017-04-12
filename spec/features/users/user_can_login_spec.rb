@@ -5,7 +5,7 @@ describe "User can login" do
     @user = create(:user)
   end
   context "when using the navbar" do
-    scenario "user is directed to login page from navbar" do
+    xscenario "user is directed to login page from navbar" do
       visit root
 
       click_on "Login"
@@ -14,7 +14,7 @@ describe "User can login" do
     end
   end
   context "when providing all information" do
-    describe "they can log in" do
+    xscenario "they can log in" do
       visit login_path
 
       within("form") do

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.feature "User can create a new account" do
   context "when using the navbar" do
-    scenario "user is directed to sign up page from navbar" do
-      visit root
+    xscenario "user is directed to sign up page from navbar" do
+      visit root_path
 
       click_on "Sign Up"
 
@@ -11,7 +11,7 @@ RSpec.feature "User can create a new account" do
     end
   end
   context "when providing all information" do
-    scenario "they are logged in successfully" do
+    xscenario "they are logged in successfully" do
 
       visit new_user_path
 
@@ -31,7 +31,7 @@ RSpec.feature "User can create a new account" do
       expect(page).to_not have_content("Login")
       expect(page).to_not have_content("Sign Up")
     end
-    scenario "they provide an already existing email" do
+    xscenario "they provide an already existing email" do
       user = create(:user)
       redundant_email = user.email
 

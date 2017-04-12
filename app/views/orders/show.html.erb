@@ -1,4 +1,4 @@
-<h1>Your Cart</h1>
+<h1>Order #<%=@order.id%></h1>
 
 <table class=table>
   <tr>
@@ -22,16 +22,11 @@
       $<%= order_item.item.price %>
     </td>
     <td>
-      <%= form_for :cart, url: cart_path(item_id: order_item.item.id), method: :put do |f| %>
-      <%= f.number_field :quantity, min: 1, value: order_item.quantity %>
-      <%= f.submit "Update" %>
-      <% end %>
+      <%= order_item.quantity %>
     </td>
+
     <td>
-      <%= button_to "Remove", '/cart/remove', method: :put, params:[item_id: order_item.item.id] %>
-    </td>
-    <td>
-      <%= order_item.subtotal %>
+      $<%= order_item.subtotal %>
     </td>
   </tr>
   <% end %>
@@ -40,9 +35,3 @@
 
 Total Price: $<%= @cart.cart_total %>
 Total Quantity: <%= @cart.cart_quantity %>
-
-<% if current_user %>
-  <%= button_to "Checkout", orders_path, class: 'checkout' %>
-<% else %>
-  <%= button_to "Login or Create Account to Checkout", login_path, method: :get%>
-<% end %>

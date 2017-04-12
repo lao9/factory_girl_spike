@@ -1,0 +1,13 @@
+<h1>Past Orders</h1>
+
+<table class= "table">
+    <tr>
+      <th>Order #</th>
+    </tr>
+
+      <% @orders.each do |order| %>
+      <tr>
+        <td> <%= order.id %> </td>
+      </tr>
+      <% end %>
+</table>

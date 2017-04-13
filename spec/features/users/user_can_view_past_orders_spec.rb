@@ -35,7 +35,6 @@ RSpec.feature "Viewing past orders" do
     click_on "Checkout"
 
     visit orders_path
-    save_and_open_page
 
     expect(current_path).to eq(orders_path)
     within("table.table") do
@@ -89,7 +88,6 @@ RSpec.feature "Viewing past orders" do
     click_button "Log In"
 
     visit orders_path
-    save_and_open_page
 
     expect(current_path).to eq(orders_path)
     within("table.table") do

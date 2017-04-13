@@ -83,7 +83,7 @@ RSpec.feature "User can add items to cart" do
       expect(page).to have_content(item3.price)
       expect(page).to have_css("img[src*='#{item3.image_url}']")
       expect(page).to have_content("Total Quantity: 3")
-      expect(page).to have_content("Total Price: $24.0")
+      expect(page).to have_content("Total Price: $#{Item.sum(:price)}")
 
 
     end

@@ -41,7 +41,7 @@ RSpec.feature "Viewing past orders" do
     # expect(page).to have_content(item1.price)   Search in correct xpath for subtotal
 
     page.has_selector?(:xpath, '/html/body/div[2]/div/table/tbody/tr[2]/td[4]')   #
-    expect(page).to have_content("Total Price: $#{item1.price + item2.price}")
+    expect(page).to have_content("Total Price: $#{item1.price}")
     expect(page).to have_content("Purchase Date: #{date}")
     expect(page).to have_link(item1.title, href: item_path(item1))
     expect(page).to have_css("img[src*='#{item1.image_url}']")

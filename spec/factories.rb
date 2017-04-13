@@ -1,5 +1,30 @@
 FactoryGirl.define do
 
+  factory :cart, class: Cart do
+    skip_create
+    initial_contents { ({"1"=>1}) }
+    initialize_with { new(initial_contents) }
+  end
+
+  factory :order_item do
+    order
+    item
+    sequence :quantity do |n|
+      n
+    end
+    sequence :subtotal do |n|
+      n
+    end
+  end
+
+  factory :order do
+    user
+
+    factory :order_with_many_items do
+      order_items {create_list(:order_item, 2)}
+    end
+  end
+
   factory :user do
     sequence :first_name do |n|
       "Dill #{n}"
@@ -37,6 +62,10 @@ FactoryGirl.define do
 
     factory :item_with_categories do
       categories {create_list(:category, 2)}
+    end
+
+    factory :item_with_many_orders do
+      order_items {create_list(:order_item, 2)}
     end
   end
 

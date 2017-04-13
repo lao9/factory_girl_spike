@@ -6,7 +6,7 @@ RSpec.feature "Viewing past orders" do
     item2 = create(:item)
     item3 = create(:item)
     user = create(:user)
-    date = DateTime.now.strftime("%A %B %e, %Y, %l:%m %p")
+    date = DateTime.now.strftime("%A %B %e, %Y, %l:%M %p")
 
     visit login_path
     fill_in "session[email]", with: user.email

@@ -16,6 +16,9 @@ RSpec.describe Item, type: :model do
     it "has a many to many relationship with categories" do
       should have_many(:categories).through(:category_items)
     end
+    it "has a many to many relationship with order" do
+      should have_many(:orders).through(:order_items)
+    end
     it "has many categories" do
       item = create(:item_with_categories)
       category1, category2 = item.categories

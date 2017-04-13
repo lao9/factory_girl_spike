@@ -1,11 +1,13 @@
 <h1>All Pickles</h1>
 
 <% @items.each do |item| %>
-  <div class="pickle" id="pickle_<%=item.id%>">
-    <h2><%= item.title %></h2>
-    <p> <%= item.description %> </p>
-    <p> <%= item.price_format %> </p>
-    <img src="<%=item.image_url%>" alt="<%=item.title%>">
-    <%= button_to "Add to Cart", cart_path, params: {item_id: item.id} %>
-  </div>
+  <% unless item.retired %>
+    <div class="pickle" id="pickle_<%=item.id%>">
+      <h2><%= item.title %></h2>
+      <p> <%= item.description %> </p>
+      <p> <%= item.price_format %> </p>
+      <img src="<%=item.image_url%>" alt="<%=item.title%>">
+      <%= button_to "Add to Cart", cart_path, params: {item_id: item.id} %>
+    </div>
+  <% end %>
 <% end %>

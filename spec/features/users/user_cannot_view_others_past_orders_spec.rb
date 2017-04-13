@@ -1,11 +1,12 @@
 require "rails_helper"
 
 RSpec.feature "Viewing past orders" do
-  it "user with several past orders can view them" do
+  it "user cannot see others' past orders" do
     item1 = create(:item)
     item2 = create(:item)
     item3 = create(:item)
     user = create(:user)
+    user2 = create(:user)
 
     visit login_path
     fill_in "session[email]", with: user.email
@@ -34,13 +35,17 @@ RSpec.feature "Viewing past orders" do
     click_on "View Cart"
     click_on "Checkout"
 
+    click_on "Logout"
+
+    visit login_path
+    fill_in "session[email]", with: user2.email
+    fill_in "session[password]", with: user2.password
+    click_button "Log In"
+
     visit orders_path
 
     expect(current_path).to eq(orders_path)
-    within("table.table") do
-      expect(page).to have_content("1")
-      expect(page).to have_content("2")
-      expect(page).to have_content("3")
-    end
+    expect(page).to_not have_content("The page you were looking for doesn't exist.")
+    expect(page).to_not have_css("table.table")
   end
 end

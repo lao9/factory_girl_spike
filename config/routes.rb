@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :index, :show]
 
+  get '/admin/dashboard', to: 'users#admin_dash'
+
 
 
 

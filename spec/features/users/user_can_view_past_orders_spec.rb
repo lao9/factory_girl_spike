@@ -90,10 +90,7 @@ RSpec.feature "Viewing past orders" do
     visit orders_path
 
     expect(current_path).to eq(orders_path)
-    within("table.table") do
-      expect(page).to_not have_content("1")
-      expect(page).to_not have_content("2")
-      expect(page).to_not have_content("3")
-    end
+    expect(page).to_not have_css("table.table")
+
   end
 end

@@ -1,48 +1,57 @@
 <h1>Your Cart</h1>
 
-<table class=table>
-  <tr>
-    <th></th>
-    <th>Item</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th></th>
-    <th>Subtotal</th>
-  </tr>
-  <% @order_items.each do |order_item| %>
-  <tr>
-    <td>
-      <img src="<%=order_item.item.image_url%>" width="100" alt="<%=order_item.item.title%>">
-    </td>
-    <td>
-      <h3><%= order_item.item.title %></h3>
-      Description: <%= order_item.item.description %>
-    </td>
-    <td>
-      $<%= order_item.item.price %>
-    </td>
-    <td>
-      <%= form_for :cart, url: cart_path(item_id: order_item.item.id), method: :put do |f| %>
-      <%= f.number_field :quantity, min: 1, value: order_item.quantity %>
-      <%= f.submit "Update" %>
-      <% end %>
-    </td>
-    <td>
-      <%= button_to "Remove", '/cart/remove', method: :put, params:[item_id: order_item.item.id] %>
-    </td>
-    <td>
-      <%= order_item.subtotal %>
-    </td>
-  </tr>
+
+  <% if @cart.contents.empty? %>
+    <p class="empty_message"> Your cart is empty, as is your heart... You know what would fix both those problems? Artisinal pickles! </p>
+    <%= link_to "View Past Orders", orders_path %>
+
+  <% else %>
+    <table class=table>
+    <tr>
+      <th></th>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th></th>
+      <th>Subtotal</th>
+    </tr>
+    <% @order_items.each do |order_item| %>
+    <tr>
+      <td>
+        <img src="<%=order_item.item.image_url%>" width="100" alt="<%=order_item.item.title%>">
+      </td>
+      <td>
+        <h3><%= order_item.item.title %></h3>
+        Description: <%= order_item.item.description %>
+      </td>
+      <td>
+        $<%= order_item.item.price %>
+      </td>
+      <td>
+        <%= form_for :cart, url: cart_path(item_id: order_item.item.id), method: :put do |f| %>
+        <%= f.number_field :quantity, min: 1, value: order_item.quantity %>
+        <%= f.submit "Update" %>
+        <% end %>
+      </td>
+      <td>
+        <%= button_to "Remove", '/cart/remove', method: :put, params:[item_id: order_item.item.id] %>
+      </td>
+      <td>
+        <%= order_item.subtotal %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+
+  Total Price: $<%= @cart.cart_total %>
+  Total Quantity: <%= @cart.cart_quantity %>
+
+
+  <% if current_user %>
+    <%= button_to "Checkout", orders_path, class: 'checkout' %>
+    <%= link_to "View Past Orders", orders_path %>
+  <% else %>
+    <%= button_to "Login or Create Account to Checkout", login_path, method: :get%>
   <% end %>
-</table>
-
-
-Total Price: $<%= @cart.cart_total %>
-Total Quantity: <%= @cart.cart_quantity %>
-
-<% if current_user %>
-  <%= button_to "Checkout", orders_path, class: 'checkout' %>
-<% else %>
-  <%= button_to "Login or Create Account to Checkout", login_path, method: :get%>
-<% end %>
+  <% end %>

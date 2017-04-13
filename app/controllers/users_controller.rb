@@ -12,8 +12,11 @@ class UsersController < ApplicationController
     elsif User.find_by(email: @user.email)
       flash[:warning] = "#{@user.email} already taken!"
       redirect_to new_user_path
+    elsif user_params[:password] != user_params[:password_confirmation]
+      flash[:warning] = "Your password confirmation does not match"
+      redirect_to new_user_path
     else
-      flash[:warning] = "Boo!"
+      flash[:warning] = "There was an problem creating your account. Please try again"
       redirect_to new_user_path
     end
   end

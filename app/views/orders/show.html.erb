@@ -34,8 +34,8 @@
 </table>
 
 
-Total Price: $<%= @cart.cart_total %>
-Total Quantity: <%= @cart.cart_quantity %>
+Total Price: $<%= @order.total_price %>
+Total Quantity: <%= @order.quantity %>
 Purchase Date: <%= @order.order_date %>
 Current Status: ordered on <%= @order.order_date %>
 <!-- Current Status: <%#= @order.status %> uncomment when status enum is added-->

@@ -10,7 +10,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.create(user_id: session[:user_id])
+
+    @order = Order.create(user_id: session[:user_id],
+                          total_price: @cart.cart_total,
+                          quantity: @cart.cart_quantity)
+
     @order.order_items << @cart.list
     session[:cart] = nil
     redirect_to order_path(@order)

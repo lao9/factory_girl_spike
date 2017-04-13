@@ -11,9 +11,7 @@ class OrdersController < ApplicationController
 
   def create
 
-    @order = Order.create(user_id: session[:user_id],
-                          total_price: @cart.cart_total,
-                          quantity: @cart.cart_quantity)
+    @order = Order.create(user_id: session[:user_id])
 
     @order.order_items << @cart.list
     session[:cart] = nil

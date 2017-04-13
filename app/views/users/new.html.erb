@@ -1,5 +1,4 @@
-<form class="form-horizontal">
-<%= form_for @user do |f| %>
+<%= form_for @user, html: {class: "form-horizontal"} do |f| %>
 
 <div class="form-group">
   <%= f.label :first_name %>
@@ -31,4 +30,3 @@
 </div>
 
 <% end %>
-</form>

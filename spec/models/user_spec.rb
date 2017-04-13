@@ -40,4 +40,9 @@ RSpec.describe User, type: :model  do
       expect(user2).to_not be_valid
     end
   end
+  describe "relationships" do
+    it "has many orders" do
+      should have_many(:orders)
+    end
+  end
 end

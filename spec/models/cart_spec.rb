@@ -1,70 +1,67 @@
 require 'rails_helper'
 
 RSpec.describe Cart, type: :model do
+  before :each do
+    @cart = create(:cart)
+    @item1 = create(:item)
+    @item2 = create(:item)
+  end
   describe "attributes" do
     it "has contents" do
-      cart = create(:cart)
-      expect(cart.contents).to be_a Hash
+      expect(@cart).to respond_to(:contents)
+      expect(@cart.contents).to be_a Hash
+      expect(@cart.contents["1"]).to eq(1)
     end
   end
+  describe "methods" do
+    it "can add new item to cart" do
+      @cart.add_item(2)
 
-#
-#   describe "relationships" do
-#     it "has a many to many relationship with items" do
-#       should have_many(:items).through(:category_items)
-#     end
-#     it "has many items" do
-#       category = create(:category_with_items)
-#       item1, item2 = category.items
-#
-#       expect(category).to respond_to(:items)
-#       expect(category.items.count).to eq(2)
-#       expect(category.items).to eq([item1, item2])
-#     end
-#   end
-# end
+      expect(@cart.contents).to eq({"1"=>1, "2"=> 1})
+    end
+    it "can new same item to cart" do
+      @cart.add_item(1)
 
+      expect(@cart.contents).to eq({"1"=>2})
+    end
+    it "can remove item from cart" do
+      @cart.add_item(1)
+      @cart.remove_item(1)
 
-# class Cart
-#
-#   attr_reader :contents
-#
-#   def initialize(initial_contents)
-#      @contents = initial_contents || {}
-#      list
-#   end
-#
-#   def add_item(item_id)
-#     contents[item_id.to_s] ||= 0
-#     contents[item_id.to_s] += 1
-#   end
-#
-#   def remove_item(item_id)
-#     contents[item_id.to_s] -= 1
-#   end
-#
-#   def update(item_id, new_quantity)
-#     contents[item_id.to_s] = new_quantity.to_i
-#   end
-#
-#   def list
-#     # contents.map { |item_id, quantity| OrderItem.new(Item.find(item_id), quantity) }
-#     contents.map do |item_id, quantity|
-#       OrderItem.new(item_id: item_id, quantity: quantity, subtotal: (quantity * Item.find(item_id).price))
-#     end
-#
-#   end
-#
-#   def cart_total
-#     list.reduce(0) do |sum, order_item|
-#       sum + order_item.subtotal
-#     end
-#   end
-#
-#   def cart_quantity
-#     list.reduce(0) do |sum, order_item|
-#       sum + order_item.quantity
-#     end
-#   end
-#
+      expect(@cart.contents).to eq({"1"=>1})
+    end
+    it "can update item quantity in cart" do
+      expect(@cart.contents["1"]).to eq(1)
+
+      @cart.update(1, 3)
+
+      expect(@cart.contents["1"]).to eq(3)
+    end
+    it "can list order item objects" do
+      cart = Cart.new({@item1.id.to_s => 1})
+      cart.add_item(@item2.id)
+      cart.update(@item1.id, 3)
+
+      expect(cart.list.count).to eq(2)
+      expect(cart.list.first).to be_a OrderItem
+      expect(cart.list.first.quantity).to eq(3)
+      expect(cart.list.last.quantity).to eq(1)
+    end
+
+    it "can calculate cart total" do
+      cart = Cart.new({@item1.id.to_s => 1})
+      cart.add_item(@item2.id)
+      cart.update(@item1.id, 3)
+      total = (@item1.price * 3) + @item2.price
+
+      expect(cart.cart_total).to eq(total)
+    end
+    it "can calculate cart quantity" do
+      cart = Cart.new({@item1.id.to_s => 1})
+      cart.add_item(@item2.id)
+      cart.update(@item1.id, 3)
+
+      expect(cart.cart_quantity).to eq(4)
+    end
+  end
 end

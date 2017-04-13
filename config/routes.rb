@@ -17,6 +17,33 @@ Rails.application.routes.draw do
 
   resource :cart, only: [:show, :create, :update]
 
+  resources :orders, only: [:create, :index, :show]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   #STAY DOWN
   get "/:category_name", to: "categories#show"
 end

@@ -1,0 +1,41 @@
+<h1>Order #<%=@order.id%></h1>
+
+<table class=table>
+  <tr>
+    <th></th>
+    <th>Item</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th></th>
+    <th>Subtotal</th>
+  </tr>
+  <% @order_items.each do |order_item| %>
+  <tr>
+    <td>
+      <img src="<%=order_item.item.image_url%>" width="100" alt="<%=order_item.item.title%>">
+    </td>
+    <td>
+      <h3><%= link_to order_item.item.title, item_path(order_item.item) %></h3>
+      Description: <%= order_item.item.description %>
+    </td>
+    <td>
+      $<%= order_item.item.price %>
+    </td>
+    <td>
+      <%= order_item.quantity %>
+    </td>
+
+    <td>
+      $<%= order_item.subtotal %>
+    </td>
+
+  </tr>
+  <% end %>
+</table>
+
+
+Total Price: $<%= @order.total_price %>
+Total Quantity: <%= @order.total_quantity %>
+Purchase Date: <%= @order.order_date %>
+Current Status: ordered on <%= @order.order_date %>
+<!-- Current Status: <%#= @order.status %> uncomment when status enum is added-->

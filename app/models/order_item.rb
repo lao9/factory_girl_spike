@@ -1,9 +1,5 @@
-class OrderItem
-  attr_reader :item, :quantity, :subtotal
+class OrderItem < ApplicationRecord
+  belongs_to :order
+  belongs_to :item
 
-  def initialize(item, quantity)
-    @item = item
-    @quantity = quantity
-    @subtotal = quantity * item.price
-  end
 end

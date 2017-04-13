@@ -1,9 +1,30 @@
-<h1> <%= @category.name %></h1>
+<h1> <%= @category.name %></h1><br>
 
-<% @category.items.each do |item| %>
+<!-- <% @category.items.each do |item| %>
   <h2><%= item.title %></h2>
   <p> <%= item.description %> </p>
   <p> <%= item.price %> </p>
   <img src="<%=item.image_url%>" alt="<%=item.title%>">
   <%= button_to "Add to Cart", cart_path, params: {item_id: item.id} %>
-<% end %>
+<% end %> -->
+
+<div class="row">
+    <% @items.each do |item| %>
+    <div class="col-sm-3 hero-feature">
+      <div class="pickle" id="pickle_<%=item.id%>">
+        <div class="thumbnail">
+          <img src="<%=item.image_url%>" alt="<%=item.title%>">
+          <div class="caption">
+            <h2><%= item.title %></h2>
+            <p> <%= item.description %> </p>
+            <p> $<%= item.price %>0 </p>
+            <p>
+              <a href= cart_path, params: {item_id: item.id} class="btn btn-primary">Add to Cart</a>
+            </p>
+            <!-- <%= button_to "Add to Cart", cart_path, params: {item_id: item.id} %> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+</div>

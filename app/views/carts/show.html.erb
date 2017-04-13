@@ -3,6 +3,8 @@
 
   <% if @cart.contents.empty? %>
     <p class="empty_message"> Your cart is empty, as is your heart... You know what would fix both those problems? Artisinal pickles! </p>
+    <%= link_to "View Past Orders", orders_path %>
+
   <% else %>
     <table class=table>
     <tr>
@@ -45,9 +47,11 @@
   Total Price: $<%= @cart.cart_total %>
   Total Quantity: <%= @cart.cart_quantity %>
 
+
   <% if current_user %>
     <%= button_to "Checkout", orders_path, class: 'checkout' %>
+    <%= link_to "View Past Orders", orders_path %>
   <% else %>
     <%= button_to "Login or Create Account to Checkout", login_path, method: :get%>
   <% end %>
-<% end %>
+  <% end %>

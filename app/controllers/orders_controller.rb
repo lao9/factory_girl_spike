@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.create(user_id: session[:user_id])
     @order.order_items << @cart.list
+    session[:cart] = nil
     redirect_to order_path(@order)
   end
 

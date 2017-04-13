@@ -3,9 +3,9 @@ class Order < ApplicationRecord
   has_many :items, through: :order_items
 
   belongs_to :user
-  
+
   def order_date
-    order_items.first.created_at.in_time_zone("Mountain Time (US & Canada)").strftime("%A %B %e, %Y, %l:%m %p")
+    created_at.in_time_zone("Mountain Time (US & Canada)").strftime("%A %B %e, %Y, %l:%M %p")
   end
 
   def total_price

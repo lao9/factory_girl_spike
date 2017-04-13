@@ -3,11 +3,13 @@ require 'rails_helper'
 RSpec.describe "A user can see a retired item" do
   it "they can't add the item to their cart" do
     item = create(:item)
+
     item.update_attributes!(retired: true)
     visit item_path(item)
     expect(current_path).to eq(item_path(item))
-    expect(page).to_not have_content "Add to Cart"
-    expect(page).to_not have_content "Item Retired"
+    save_and_open_page
+    expect(page).to_not have_button "Add to Cart"
+    expect(page).to have_content "Item Retired"
   end
 end
 

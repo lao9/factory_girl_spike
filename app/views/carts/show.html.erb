@@ -36,11 +36,11 @@
   </tr>
   <% end %>
 </table>
-
-
+<br>
+<h3>
 Total Price: $<%= @cart.cart_total %>
 Total Quantity: <%= @cart.cart_quantity %>
-
+</h3><br>
 <% if current_user %>
   <%= button_to "Checkout", "#", class: 'checkout' %>
 <% else %>

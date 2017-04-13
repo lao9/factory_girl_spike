@@ -12,9 +12,8 @@
             <p> <%= item.description %> </p>
             <p> $<%= item.price %>0 </p>
             <p>
-              <a href= cart_path, params: {item_id: item.id} class="btn btn-primary">Add to Cart</a>
+              <%= button_to "Add to Cart", cart_path, params: {item_id: item.id}, class: "btn-primary" %>
             </p>
-            <!-- <%= button_to "Add to Cart", cart_path, params: {item_id: item.id} %> -->
           </div>
         </div>
       </div>

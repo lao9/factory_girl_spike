@@ -19,7 +19,7 @@
       Description: <%= order_item.item.description %>
     </td>
     <td>
-      $<%= order_item.item.price %>
+      $<%= order_item.item.price_format %>
     </td>
     <td>
       <%= form_for :cart, url: cart_path(item_id: order_item.item.id), method: :put do |f| %>

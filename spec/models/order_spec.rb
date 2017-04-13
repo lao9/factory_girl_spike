@@ -8,6 +8,9 @@ RSpec.describe Order, type: :model do
     it "has a many to many relationship with categories" do
       should have_many(:items).through(:order_items)
     end
+    it "belongs to a user" do
+      should belong_to(:user)
+    end
   end
   describe "methods" do
     it "can return an order date" do

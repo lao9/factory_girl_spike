@@ -10,7 +10,7 @@
           <div class="caption">
             <h2><%= item.title %></h2>
             <p> <%= item.description %> </p>
-            <p> <%= item.price_format %>0 </p>
+            <p> <%= item.price_format %> </p>
             <p>
               <%= button_to "Add to Cart", cart_path, params: {item_id: item.id}, class: "btn-primary" %>
             </p>

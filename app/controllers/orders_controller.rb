@@ -1,7 +1,12 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = Order.where(user_id: current_user.id)
+    # binding.pry
+    unless current_user
+      render :file => 'public/404.html', :status => :not_found
+    else
+      @orders = Order.where(user_id: current_user.id)
+    end
   end
 
   def create

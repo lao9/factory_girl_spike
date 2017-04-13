@@ -5,7 +5,6 @@ RSpec.describe Cart, type: :model do
     it "has contents" do
       cart = create(:cart)
       expect(cart.contents).to be_a Hash
-      expect(cart.keys).to eq()
     end
   end
 

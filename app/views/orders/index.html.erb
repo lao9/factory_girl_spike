@@ -1,13 +1,16 @@
 <h1>Past Orders</h1>
 
-<table class= "table">
+<% if @orders.empty?%>
+  <p class="empty_message"> You don't have any orders yet. Come back after you've bought some pickles to make sure you bought them right! </p>
+<% else %>
+  <table class= "table">
     <tr>
       <th>Order #</th>
     </tr>
-
       <% @orders.each do |order| %>
       <tr>
         <td> <%= link_to order.id, order_path(order)  %> </td>
       </tr>
       <% end %>
-</table>
+  </table>
+<% end %>

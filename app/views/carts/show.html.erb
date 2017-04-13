@@ -48,9 +48,9 @@ Total Price: $<%= @cart.cart_total %>
 Total Quantity: <%= @cart.cart_quantity %>
 </h3><br>
 <% if current_user %>
-  <%= button_to "Checkout", "#", class: 'checkout' %>
+  <%= button_to "Checkout", orders_path, class: 'checkout' %>
+  <%= link_to "View Past Orders", orders_path %>
 <% else %>
   <%= button_to "Login or Create Account to Checkout", login_path, method: :get%>
 <% end %>
   <% end %>
-

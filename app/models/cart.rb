@@ -39,4 +39,8 @@ class Cart
     end
   end
 
+  def empty?
+    contents.empty?
+  end
+
 end

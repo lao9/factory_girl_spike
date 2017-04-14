@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
 
     user = User.find_by(email: params[:session][:email])
-    if user.admin? && user.authenticate(params[:session][:password])
+    if user && user.authenticate(params[:session][:password]) && user.admin?
       flash[:success] = "Welcome, #{user.first_name}l!"
       session[:user_id] = user.id
       redirect_to "/admin/dashboard"

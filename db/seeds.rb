@@ -17,3 +17,11 @@ categories.each do |category_name|
     category.items.create(title: new_title, description: descriptions.sample, price: prices.sample, image_url: "http://loremflickr.com/320/240/#{adjectives.sample},pickle/all")
   end
 end
+
+
+User.create(first_name: "Dr", last_name: "Picklemeister", email: "a@a.com", password: "password", role: 1)
+User.create(first_name: "jane", last_name: "stevens", email: "a1@a.com", password: "password")
+User.create(first_name: "jane", last_name: "stevens", email: "a2@a.com", password: "password")
+User.create(first_name: "jane", last_name: "stevens", email: "a3@a.com", password: "password")
+User.create(first_name: "jane", last_name: "stevens", email: "a4@a.com", password: "password")
+User.create(first_name: "jane", last_name: "stevens", email: "a5@a.com", password: "password")

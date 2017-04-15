@@ -13,7 +13,7 @@ FactoryGirl.define do
       n
     end
     sequence :subtotal do |n|
-      n
+      n.to_f
     end
   end
 

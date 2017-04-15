@@ -5,7 +5,7 @@
 <% else %>
   <%= render partial: 'cart_table' %>
   <div>
-    <h4>Total Price: $<%= @cart.cart_total %></h4>
+    <h4>Total Price: <%= @cart.cart_total %></h4>
     <h4>Total Quantity: <%= @cart.cart_quantity %></h4>
   </div>
   <%= render partial: 'checkout_buttons' if current_user %>

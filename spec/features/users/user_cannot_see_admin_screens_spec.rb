@@ -12,8 +12,7 @@ RSpec.feature "Viewing past orders" do
 
       visit admin_dashboard_path
 
-      expect(page).to have_content("The page you were looking for doesn't exist.")
-      expect(page).to have_content("You may have mistyped the address or the page may have moved.")
+      expect(page).to have_xpath("//img[@src='http://i.imgur.com/4zZv7CM.jpg']")
       expect(page).to_not have_button("View All Users")
     end
   end

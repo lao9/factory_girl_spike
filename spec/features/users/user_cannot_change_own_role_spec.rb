@@ -9,6 +9,6 @@ RSpec.feature "User cannot change own role" do
     fill_in "session[password]", with: user.password
     click_button "Log In"
 
-    expect(page).to_not have_button("Give yourself admin priviliges!") 
+    expect(page).to_not have_button("Give yourself admin priviliges!")
   end
 end

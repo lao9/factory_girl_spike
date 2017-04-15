@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Viewing past orders" do
-  it "user cannot see others' past orders" do
+  it "user cannot see others' past orders or cart" do
     item1 = create(:item)
     item2 = create(:item)
     item3 = create(:item)
@@ -26,7 +26,6 @@ RSpec.feature "Viewing past orders" do
       click_on "Add to Cart"
     end
     click_on "View Cart"
-    click_on "Checkout"
     visit items_path
 
     within("div#pickle_#{item3.id}.pickle") do
@@ -47,5 +46,11 @@ RSpec.feature "Viewing past orders" do
     expect(current_path).to eq(orders_path)
     expect(page).to_not have_content("The page you were looking for doesn't exist.")
     expect(page).to_not have_css("table.table")
+
+    click_on "View Cart"
+
+    expect(page).to_not have_content(item2.title)
+    expect(page).to_not have_content(item2.description)
+    expect(page).to_not have_content(item2.price)
   end
 end

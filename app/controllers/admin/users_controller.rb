@@ -6,11 +6,10 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def admin_dash
-    # binding.pry
   end
 
 

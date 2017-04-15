@@ -9,7 +9,7 @@ class Order < ApplicationRecord
   end
 
   def total_price
-    order_items.sum(:subtotal)
+    "$%.2f" % order_items.sum(:subtotal)
   end
 
   def total_quantity

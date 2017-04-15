@@ -1,0 +1,22 @@
+<table class= "table">
+  <tr>
+    <th>Order #</th>
+    <th>Status</th>
+    <th>Items ordered</th>
+    <th>Total Price</th>
+  </tr>
+    <% @orders.each do |order| %>
+    <tr>
+      <td> <%= link_to order.id, order_path(order)  %> </td>
+      <td>
+        <%= order.status %>
+      </td>
+      <td>
+        <%= order.total_quantity %>
+      </td>
+      <td>
+        <%= order.price_format(order.total_price) %>
+      </td>
+    </tr>
+    <% end %>
+</table>

@@ -1,28 +1,7 @@
 <h1>Past Orders</h1>
 
 <% if @orders.empty?%>
-  <p class="empty_message"> You don't have any orders yet. Come back after you've bought some pickles to make sure you bought them right! </p>
+  <%= render partial: 'empty_order' %>
 <% else %>
-  <table class= "table">
-    <tr>
-      <th>Order #</th>
-      <th>Status</th>
-      <th>Items ordered</th>
-      <th>Total Price</th>
-    </tr>
-      <% @orders.each do |order| %>
-      <tr>
-        <td> <%= link_to order.id, order_path(order)  %> </td>
-        <td>
-          <%= order.status %>
-        </td>
-        <td>
-          <%= order.total_quantity %>
-        </td>
-        <td>
-          <%= order.price_format(order.total_price) %>
-        </td>
-      </tr>
-      <% end %>
-  </table>
+  <%= render partial: 'order_table' %>
 <% end %>

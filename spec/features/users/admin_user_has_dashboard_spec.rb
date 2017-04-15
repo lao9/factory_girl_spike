@@ -13,6 +13,7 @@ RSpec.describe "A user can go to the admin/dashboard route" do
       within('h1') do
         expect(page).to have_content('Admin Dashboard')
       end
+
   end
   scenario "as a registered user they see a 404" do
       visit login_path

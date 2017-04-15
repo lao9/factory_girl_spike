@@ -96,6 +96,16 @@ feature "admin can modify their account info" do
     expect(page).to have_content(new_email)
 
     expect(User.find(@admin_user.id).email).to eq(new_email)
+
+    click_link "Logout"
+
+    click_link "Login"
+
+    fill_in "session[email]", with: new_email
+    fill_in "session[password]", with: @admin_user.password
+    click_button "Log In"
+
+    expect(page).to have_content("Welcome, #{@admin_user.first_name}!")
   end
   scenario "admin cannot modify a users account info" do
     visit login_path

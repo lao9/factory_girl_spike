@@ -70,10 +70,9 @@
               </li>
             <% end %>
             <% if current_user %>
-              <li><%= link_to user_path(current_user) do %><span class="glyphicon glyphicon-user"></span> <%= "#{current_user.full_name}" %></a></li>
-              <% end %>
-              <li><%= link_to logout_path, method: :delete do %><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-              <% end %>
+              <%= render partial: 'shared/default_user_path' unless current_user.admin? %>
+              <%= render partial: 'shared/admin_user_path' if current_user.admin? %>
+              <li><%= link_to logout_path, method: :delete do %><span class="glyphicon glyphicon-log-out"></span> Logout</a></li><% end %>
             <% else %>
               <li><%= link_to new_user_path do %><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
               <% end %>

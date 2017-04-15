@@ -22,4 +22,15 @@ class OrdersController < ApplicationController
     @order= Order.find(params[:id])
     @order_items = @order.order_items
   end
+
+  def update
+    order = Order.find(params[:id])
+    order.update(status: params[:status])
+    redirect_back(fallback_location: root_path)
+  end
+
+private
+
+
+
 end

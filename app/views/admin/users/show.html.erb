@@ -1,4 +1,3 @@
-<h1> User Profile </h1>
-<h2> <%= @viewed_user.first_name + " " + @viewed_user.last_name%></h2>
+<%= render partial: 'shared/user_profile' %>
 
-<%= link_to "View Past Orders", orders_path %>
+<%= button_to "Edit Account Information", edit_admin_user_path(@display_user), method: :get if current_user.admin? && (@display_user == current_user) %>

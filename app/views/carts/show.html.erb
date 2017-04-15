@@ -1,5 +1,7 @@
 <h1>Your Cart</h1>
 
+<%= render partial: 'shared/view_past_order_link' %>
+
 <% if @cart.empty? %>
   <%= render partial: 'cart_empty' %>
 <% else %>
@@ -11,4 +13,3 @@
   <%= render partial: 'checkout_buttons' if current_user %>
   <%= render partial: 'login_button' unless current_user %>
 <% end %>
-<h4><%= link_to "View Past Orders", orders_path %></h4>

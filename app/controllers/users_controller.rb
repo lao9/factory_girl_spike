@@ -25,11 +25,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-  def admin_dash
-    if !current_user || !current_user.admin?
-      render :template => 'error_pages/404.html', :layout => true, :status => :not_found
-    end
-  end
 
   private
 

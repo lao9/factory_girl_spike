@@ -10,6 +10,10 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def admin_dash
+    @ordered = Order.where(status: "ordered")
+    @paid = Order.where(status: "paid")
+    @completed = Order.where(status: "completed")
+    @cancelled = Order.where(status: "cancelled")
   end
 
 

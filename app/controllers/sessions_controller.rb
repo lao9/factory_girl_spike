@@ -7,11 +7,11 @@ class SessionsController < ApplicationController
 
     user = User.find_by(email: params[:session][:email])
     if user && user.authenticate(params[:session][:password]) && user.admin?
-      flash[:success] = "Welcome, #{user.first_name}l!"
+      flash[:success] = "Welcome, #{user.first_name}!"
       session[:user_id] = user.id
       redirect_to "/admin/dashboard"
     elsif user && user.authenticate(params[:session][:password])
-      flash[:success] = "Welcome, #{user.first_name}l!"
+      flash[:success] = "Welcome, #{user.first_name}!"
       session[:user_id] = user.id
       redirect_to user_path(user)
     else

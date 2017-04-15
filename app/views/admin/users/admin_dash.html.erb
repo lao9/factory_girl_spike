@@ -1,12 +1,12 @@
 <h1>Admin Dashboard</h1>
 
 <div class="">
-  <h3>Ordered: <%= @ordered.count %> </h3>
+  <h3>Ordered: <%= @orders.ordered.count %> </h3>
   <table class="table" id="ordered">
     <th>Order no.</th>
     <th>Order date</th>
     <th>Update status</th>
-    <% @ordered.each do |order| %>
+    <% @orders.ordered.each do |order| %>
     <tr>
       <td><%= link_to order.id, order_path(order) %></td>
       <td><%= order.order_date %></td>
@@ -18,12 +18,12 @@
   </table>
 </div>
 <div class="">
-  <h3>Paid: <%= @paid.count %></h3>
+  <h3>Paid: <%= @orders.paid.count %></h3>
   <table class="table" id="paid">
     <th>Order no.</th>
     <th>Order date</th>
     <th>Update Order Status</th>
-    <% @paid.each do |order| %>
+    <% @orders.paid.each do |order| %>
     <tr>
       <td><%= link_to order.id, order_path(order) %></td>
       <td><%= order.order_date %></td>
@@ -35,12 +35,12 @@
   </table>
 </div>
 <div class="">
-  <h3>Completed: <%= @completed.count %></h3>
+  <h3>Completed: <%= @orders.completed.count %></h3>
   <table class="table" id="completed">
     <th>Order no.</th>
     <th>Order date</th>
     <th>Update</th>
-    <% @completed.each do |order| %>
+    <% @orders.completed.each do |order| %>
     <tr>
       <td><%= link_to order.id, order_path(order) %></td>
       <td><%= order.order_date %></td>
@@ -50,11 +50,11 @@
 </div>
 
 <div class="">
-  <h3>Cancelled: <%= @cancelled.count %></h3>
+  <h3>Cancelled: <%= @orders.cancelled.count %></h3>
   <table class="table" id="cancelled">
     <th>Order no.</th>
     <th>Order date</th>
-    <% @cancelled.each do |order| %>
+    <% @orders.cancelled.each do |order| %>
     <tr>
       <td><%= link_to order.id, order_path(order) %></td>
       <td><%= order.order_date %></td>

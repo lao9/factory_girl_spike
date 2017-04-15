@@ -16,6 +16,21 @@ class Order < ApplicationRecord
     order_items.sum(:quantity)
   end
 
+  def ordered
+    Order.where(status: "ordered")
+  end
+
+  def paid
+    Order.where(status: "paid")
+  end
+
+  def completed
+     Order.where(status: "completed")
+  end
+  def cancelled
+     Order.where(status: "cancelled")
+  end
+
   enum status: %w(ordered paid cancelled completed)
 
 end

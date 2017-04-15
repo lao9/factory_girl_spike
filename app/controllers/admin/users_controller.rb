@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def show
-    @user = User.find(params[:id])
+    @viewed_user = User.find(params[:id])
   end
 
   def admin_dash

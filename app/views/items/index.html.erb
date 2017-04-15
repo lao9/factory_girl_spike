@@ -1,22 +1,7 @@
 <h1>All Pickles</h1><br>
 
-
 <div class="row">
     <% @items.each do |item| %>
-    <div class="col-sm-3 hero-feature">
-      <div class="pickle" id="pickle_<%=item.id%>" >
-        <div class="thumbnail" style="height: 40em;">
-          <img src="<%=item.image_url%>" alt="<%=item.title%>">
-          <div class="caption">
-            <h2><%= item.title %></h2>
-            <p> <%= item.description %> </p>
-            <p> <%= item.price_format %> </p>
-            <p>
-              <%= button_to "Add to Cart", cart_path, params: {item_id: item.id}, class: "btn-primary" %>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+      <%= render partial: 'shared/item_card', :locals => {:item => item} %>
     <% end %>
 </div>

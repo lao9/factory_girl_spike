@@ -23,6 +23,7 @@ RSpec.feature "Cart is emptied" do
     expect(page).to_not have_content(item.title)
     expect(page).to_not have_content(item.description)
     expect(page).to_not have_content(item.price)
+    expect(page).to have_content("Your cart is empty, as is your heart...")
   end
 
   scenario "When user checks out" do
@@ -47,5 +48,6 @@ RSpec.feature "Cart is emptied" do
     expect(page).to_not have_content(item.title)
     expect(page).to_not have_content(item.description)
     expect(page).to_not have_content(item.price)
+    expect(page).to have_content("Your cart is empty, as is your heart...")
   end
 end

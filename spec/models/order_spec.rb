@@ -20,7 +20,7 @@ RSpec.describe Order, type: :model do
       expect(@order.order_date).to eq(exp_date)
     end
     it "can return a total price" do
-      expect(@order.total_price).to eq(OrderItem.sum(:subtotal))
+      expect(@order.total_price).to eq("$%.2f" % (OrderItem.sum(:subtotal)))
     end
     it "can return a total quantity" do
       expect(@order.total_quantity).to eq(OrderItem.sum(:quantity))

@@ -28,7 +28,7 @@ class Cart
   end
 
   def cart_total
-    list.reduce(0) do |sum, order_item|
+    "$%.2f" % list.reduce(0) do |sum, order_item|
       sum + order_item.subtotal
     end
   end

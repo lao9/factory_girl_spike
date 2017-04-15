@@ -22,7 +22,7 @@ describe "User can login" do
       click_button "Log In"
 
       expect(current_path).to eq(user_path(@user))
-      expect(page).to have_content("Welcome, #{@user.first_name}l!")
+      expect(page).to have_content("Welcome, #{@user.first_name}!")
       expect(page).to have_content("Logout")
 
       expect(page).to_not have_content "Sign Up"

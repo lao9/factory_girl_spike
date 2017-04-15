@@ -52,7 +52,7 @@ RSpec.describe Cart, type: :model do
       cart = Cart.new({@item1.id.to_s => 1})
       cart.add_item(@item2.id)
       cart.update(@item1.id, 3)
-      total = (@item1.price * 3) + @item2.price
+      total = "$%.2f" % ((@item1.price * 3) + @item2.price)
 
       expect(cart.cart_total).to eq(total)
     end

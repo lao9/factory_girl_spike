@@ -20,8 +20,8 @@ end
 
 
 User.create(first_name: "Dr", last_name: "Picklemeister", email: "a@a.com", password: "password", role: 1)
-User.create(first_name: "jane", last_name: "stevens", email: "a1@a.com", password: "password")
-User.create(first_name: "jane", last_name: "stevens", email: "a2@a.com", password: "password")
-User.create(first_name: "jane", last_name: "stevens", email: "a3@a.com", password: "password")
-User.create(first_name: "jane", last_name: "stevens", email: "a4@a.com", password: "password")
-User.create(first_name: "jane", last_name: "stevens", email: "a5@a.com", password: "password")
+User.create(first_name: "Albert", last_name: "Dibbons", email: "a1@a.com", password: "password")
+User.create(first_name: "Bethany", last_name: "Culberth", email: "a2@a.com", password: "password")
+User.create(first_name: "Charles", last_name: "Mielnicowiktz", email: "a3@a.com", password: "password")
+User.create(first_name: "Diana", last_name: "Crivvens", email: "a4@a.com", password: "password")
+User.create(first_name: "Edward", last_name: "Donutbaker", email: "a5@a.com", password: "password")

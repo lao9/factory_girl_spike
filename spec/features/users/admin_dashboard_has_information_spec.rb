@@ -13,7 +13,6 @@ RSpec.feature "Admin Dashboard"do
     click_button "Log In"
     visit dashboard_path
     expect(page).to have_content("All Orders")
-    
   end
 end
 

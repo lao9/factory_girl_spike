@@ -9,21 +9,22 @@ RSpec.describe "A user can go to the admin/dashboard route" do
       fill_in "session[email]", with: @user.email
       fill_in "session[password]", with: @user.password
       click_button "Log In"
-      visit dashboard_path
+      visit admin_dashboard_path
       within('h1') do
         expect(page).to have_content('Admin Dashboard')
       end
+
   end
   scenario "as a registered user they see a 404" do
       visit login_path
       fill_in "session[email]", with: @user.email
       fill_in "session[password]", with: @user.password
       click_button "Log In"
-      visit dashboard_path
+      visit admin_dashboard_path
       expect(page).to have_content('404')
   end
   scenario "as an unregistered user they see a 404" do
-      visit dashboard_path
+      visit admin_dashboard_path
       expect(page).to have_content('404')
   end
 end

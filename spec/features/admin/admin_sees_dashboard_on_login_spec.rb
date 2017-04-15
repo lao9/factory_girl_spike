@@ -10,5 +10,9 @@ RSpec.feature 'Admin logs in' do
     click_button "Log In"
 
     expect(current_path).to eq("/admin/dashboard")
+
+    expect(page).to have_link("Admin Dashboard")
+    expect(page).to have_link("View All Users")
+
   end
 end

@@ -25,16 +25,9 @@ class UsersController < ApplicationController
     @display_user = current_user
   end
 
-  def admin_dash
-    if !current_user || !current_user.admin?
-      render :template => 'error_pages/404.html', :layout => true, :status => :not_found
-    end
-  end
-
   private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
-
 end

@@ -23,6 +23,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def admin_dash
+    @orders =  Order
   end
 
   private

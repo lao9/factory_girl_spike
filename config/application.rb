@@ -23,3 +23,6 @@ module WeCanPickleThat
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+gmail_username= 'drpicklemeister@gmail.com'
+gmail_password= 'Q5hE9O@v2&'

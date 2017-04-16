@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
 
     @order.order_items << @cart.list
     session[:cart] = nil
+    OrderMailer.new_order(@order.user, @order).deliver
     redirect_to order_path(@order)
   end
 
@@ -26,6 +27,7 @@ class OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(status: params[:status])
+    OrderMailer.update(order.user, order).deliver
     redirect_back(fallback_location: root_path)
   end
 

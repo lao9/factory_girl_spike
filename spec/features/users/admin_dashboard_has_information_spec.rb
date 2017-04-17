@@ -33,7 +33,7 @@ RSpec.feature "Admin Dashboard"do
     within('table#ordered') do
       click_button("mark as paid")
     end
-    mail =  ActionMailer::Base.deliveries.first
+    mail =  ActionMailer::Base.deliveries.last
     expect(mail.from).to eq(["MrPickles@WeCanPickleThat.com"])
     expect(mail.subject).to eq("Your order has been updated")
     expect(page).to have_content("Paid: 2")
@@ -44,7 +44,7 @@ RSpec.feature "Admin Dashboard"do
     within('table#ordered') do
       click_button("cancel")
     end
-    mail =  ActionMailer::Base.deliveries.first
+    mail =  ActionMailer::Base.deliveries.last
     expect(mail.from).to eq(["MrPickles@WeCanPickleThat.com"])
     expect(mail.subject).to eq("Your order has been updated")
     expect(page).to have_content("Cancelled: 2")
@@ -55,7 +55,7 @@ RSpec.feature "Admin Dashboard"do
     within('table#paid') do
       click_button("cancel")
     end
-    mail =  ActionMailer::Base.deliveries.first
+    mail =  ActionMailer::Base.deliveries.last
     expect(mail.from).to eq(["MrPickles@WeCanPickleThat.com"])
     expect(mail.subject).to eq("Your order has been updated")
     expect(page).to have_content("Cancelled: 2")
@@ -66,7 +66,7 @@ RSpec.feature "Admin Dashboard"do
     within('table#paid') do
       click_button("mark as completed")
     end
-    mail =  ActionMailer::Base.deliveries.first
+    mail =  ActionMailer::Base.deliveries.last
     expect(mail.from).to eq(["MrPickles@WeCanPickleThat.com"])
     expect(mail.subject).to eq("Your order has been updated")
     expect(page).to have_content("Completed: 2")

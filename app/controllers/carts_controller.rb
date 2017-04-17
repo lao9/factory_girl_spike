@@ -27,5 +27,4 @@ class CartsController < ApplicationController
     @cart.update(params[:item_id], params[:cart][:quantity])
     redirect_to cart_path
   end
-
 end

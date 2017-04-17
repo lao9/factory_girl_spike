@@ -25,3 +25,13 @@ User.create(first_name: "Bethany", last_name: "Culberth", email: "a2@a.com", pas
 User.create(first_name: "Charles", last_name: "Mielnicowiktz", email: "a3@a.com", password: "password")
 User.create(first_name: "Diana", last_name: "Crivvens", email: "a4@a.com", password: "password")
 User.create(first_name: "Edward", last_name: "Donutbaker", email: "a5@a.com", password: "password")
+
+
+(1..6).each do |n|
+  user = User.find(n)
+  subtotal = Item.find(1).price
+  user.orders.create.order_items.create(item_id: 1, quantity: 1, subtotal: subtotal)
+  user.orders.create.order_items.create(item_id: 1, quantity: 2, subtotal: (subtotal * 2) )
+  subtotal = Item.find(3).price
+  user.orders.create.order_items.create(item_id: 5, quantity: 5, subtotal: (subtotal * 5) )
+end

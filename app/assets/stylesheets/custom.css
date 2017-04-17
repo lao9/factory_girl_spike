@@ -8,3 +8,11 @@
   max-height: 200px;
   display: block;
 }
+
+.centered {
+  position: absolute;
+  /*left: 50%;*/
+  top: 40%;
+  width: 80%;
+  text-align: center;
+}

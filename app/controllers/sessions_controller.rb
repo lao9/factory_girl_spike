@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     elsif user && user.authenticate(params[:session][:password])
       flash[:success] = "Welcome, #{user.first_name}!"
       session[:user_id] = user.id
-      redirect_to user_path(user)
+      redirect_to user_path
     else
       flash[:danger] = "Invalid Username or Password!"
       redirect_to login_path

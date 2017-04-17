@@ -54,4 +54,5 @@ User.create(first_name: "Edward", last_name: "Donutbaker", email: "a5@a.com", pa
   user.orders.create.order_items.create(item_id: 1, quantity: 2, subtotal: (subtotal * 2) )
   subtotal = Item.find(3).price
   user.orders.create.order_items.create(item_id: 5, quantity: 5, subtotal: (subtotal * 5) )
+  user.orders.each_with_index {|order, index| order.update(status: rand(0..3))}
 end

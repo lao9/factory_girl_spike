@@ -1,8 +1,8 @@
 
 <div class="col-sm-3 hero-feature">
   <div class="pickle" id="pickle_<%=item.id%>">
-    <div class="thumbnail" style="height: 40em;">
-      <%= image_tag "#{item.image_url}"%>
+    <div class="thumbnail">
+      <%= image_tag(item.image_url) %>
       <div class="caption">
         <h2><%= item.title %></h2>
         <p> <%= item.description %> </p>

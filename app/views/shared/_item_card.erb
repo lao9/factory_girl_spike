@@ -4,12 +4,14 @@
     <div class="thumbnail">
       <%= image_tag(item.image_url) %>
       <div class="caption">
-        <h2><%= item.title %></h2>
-        <p> <%= item.description %> </p>
-        <p> <%= item.price_format %> </p>
-        <p>
-          <%= render partial: 'shared/add_to_cart_button', :locals => {:item => item} %>
-        </p>
+        <div class="centered">
+          <h2><%= item.title %></h2>
+          <p> <%= item.description %> </p>
+          <p> <%= item.price_format %> </p>
+          <p>
+            <%= render partial: 'shared/add_to_cart_button', :locals => {:item => item} %>
+          </p>
+        </div>
       </div>
     </div>
   </div>

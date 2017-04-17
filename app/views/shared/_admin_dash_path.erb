@@ -1,0 +1,9 @@
+<%= link_to admin_dashboard_path do %>
+  <span class="glyphicon glyphicon-dashboard"></span>
+  Admin Dashboard
+  <b class="caret"></b>
+<% end %>
+<ul class="dropdown-menu">
+  <li><%= link_to admin_users_path, method: :get do %><span class="glyphicon glyphicon-stats"></span> Order Analytics</a></li><% end %>
+  <li><%= link_to admin_users_path, method: :get do %><span class="glyphicon glyphicon-user"></span> View All Users</a></li><% end %>
+</ul>

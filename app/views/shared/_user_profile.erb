@@ -5,3 +5,5 @@
   <li> Last Name: <%=@display_user.last_name%></li>
   <li> Email Name: <%=@display_user.email%></li>
 </ul>
+
+<%= button_to "Edit Account Information", edit_admin_user_path(@display_user), method: :get if current_user.admin? && (@display_user == current_user) %>

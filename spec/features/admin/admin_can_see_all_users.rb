@@ -7,10 +7,9 @@ RSpec.feature 'Admin logs in' do
     user2 = create(:user)
     user3 = create(:user)
 
-    visit login_path
-    fill_in "session[email]", with: admin.email
-    fill_in "session[password]", with: admin.password
-    click_button "Log In"
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(admin)
 
     click_button "View All Users"
 

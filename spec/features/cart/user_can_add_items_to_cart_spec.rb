@@ -40,9 +40,7 @@ RSpec.feature "User can add items to cart" do
       expect(page).to have_css("img[src*='#{item.image_url}']")
       expect(page).to have_content("Total Price: $#{item.price * 4}")
       expect(page).to have_content("Total Quantity: 4")
-
     end
-
     scenario "user can add several different items to cart from index" do
       item1 = create(:item)
       item2 = create(:item)
@@ -84,8 +82,6 @@ RSpec.feature "User can add items to cart" do
       expect(page).to have_css("img[src*='#{item3.image_url}']")
       expect(page).to have_content("Total Quantity: 3")
       expect(page).to have_content("Total Price: $#{Item.sum(:price)}")
-
-
     end
   end
 end

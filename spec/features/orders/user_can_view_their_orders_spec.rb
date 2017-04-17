@@ -28,7 +28,6 @@ feature "when a user visits their orders page" do
 
       visit orders_path
 
-
       within("table.table") do
         expect(page).to have_link(order.id)
         click_on order.id

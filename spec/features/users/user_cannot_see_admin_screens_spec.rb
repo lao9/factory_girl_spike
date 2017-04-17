@@ -5,10 +5,9 @@ RSpec.feature "Viewing past orders" do
     scenario "cannot see admin page" do
       user = create(:user)
 
-      visit login_path
-      fill_in "session[email]", with: user.email
-      fill_in "session[password]", with: user.password
-      click_button "Log In"
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(user)
 
       visit admin_dashboard_path
 

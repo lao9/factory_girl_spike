@@ -29,7 +29,6 @@ RSpec.feature "Cart is emptied" do
   scenario "When user checks out" do
     item = create(:item)
     user = create(:user)
-
     visit login_path
     fill_in "session[email]", with: user.email
     fill_in "session[password]", with: user.password
@@ -43,6 +42,9 @@ RSpec.feature "Cart is emptied" do
 
     click_on "View Cart"
     click_on "Checkout"
+    mail =  ActionMailer::Base.deliveries.first
+    expect(mail.from).to eq(["MrPickles@WeCanPickleThat.com"])
+    expect(mail.subject).to eq("Your order has been placed")
     click_on "View Cart"
 
     expect(page).to_not have_content(item.title)

@@ -15,7 +15,7 @@ category.items.create(title: "Seattle Spicy Dill", description: "A dill pickle w
 category = Category.create(name:"Dill")
 category.items.create(title: "Backyard Brine", description: "Everything: A classic dill pickle, but with a bit of everything flavor-wise thrown in.", price: 7, image_url: "Backyard_brine_pickle_Everything_6163209103781.jpg")
 category.items.create(title: "Brooklyn Brine", description: "NYC Deli: Tastes just like it's straight from you favorite neighborhood deli.", price: 6, image_url: "brooklyn_dill.jpg")
-category.items.create(title: "Indiana Moonshine", description: "An Indiana style whiskey pickle in Hotel Tango Distillery moonshine.", price: 11, image_url: "indiana_moonshine.jpeg")
+category.items.create(title: "Indiana Moonshine", description: "An Indiana style whiskey pickle in Hotel Tango Distillery moonshine.", price: 11, image_url: "indiana_moonshine.jpg")
 category.items.create(title: "Vampire Slayers", description: "Dill pickles with a heavy dose of fresh garlic.", price: 7, image_url: "vampire_dill.jpg")
 
 category = Category.create(name:"Vegetable")

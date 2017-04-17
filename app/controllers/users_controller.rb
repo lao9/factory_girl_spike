@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Successfully logged in!"
-      redirect_to user_path(@user)
+      redirect_to user_path
     elsif User.find_by(email: @user.email)
       flash[:warning] = "#{@user.email} already taken!"
       redirect_to new_user_path

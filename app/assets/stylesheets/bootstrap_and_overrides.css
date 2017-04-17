@@ -4,3 +4,15 @@
   Static version of css will use Glyphicons sprites by default
   =require twitter-bootstrap-static/sprites
 */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 3em;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.main-content {
+  margin-bottom: 4em ;
+}

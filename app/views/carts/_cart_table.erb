@@ -29,7 +29,7 @@
         <%= button_to "Remove", '/cart/remove', method: :put, params:[item_id: order_item.item.id] %>
       </td>
       <td>
-        <%= order_item.subtotal %>
+        <%= order_item.price_format(order_item.subtotal) %>
       </td>
     </tr>
   <% end %>

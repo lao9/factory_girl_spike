@@ -4,13 +4,11 @@ feature "user profile" do
   scenario "user can see dashboard by clicking on their name" do
     user = create(:user)
 
-    visit login_path
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
 
-    fill_in 'session[email]', with: user.email
-    fill_in 'session[password]', with: user.password
-    click_on 'Log In'
-
-    expect(current_path).to eq(user_path)
+    visit root_path
 
     click_link "All Pickles"
 

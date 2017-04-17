@@ -43,6 +43,9 @@ FactoryGirl.define do
     sequence :password do |n|
       "vlassic#{n}"
     end
+    factory :user_with_orders do
+      orders {create_list(:order_with_many_items, 2)}
+    end
   end
 
   factory :item do

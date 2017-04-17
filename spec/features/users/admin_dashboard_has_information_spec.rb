@@ -4,7 +4,7 @@ RSpec.feature "Admin Dashboard"do
   before :each do
     @user = create(:user)
     @user.update_attributes(role: 'admin')
-    # order1, order2, order3, order4 = create_list(:order_with_many_items, 4)
+
     statii = ["ordered", "paid", "completed", "cancelled"]
     orders = create_list(:order_item, 4)
     index = 0
@@ -12,10 +12,9 @@ RSpec.feature "Admin Dashboard"do
       order.order.update(status: statii[index])
       index += 1
     end
-    visit login_path
-    fill_in "session[email]", with: @user.email
-    fill_in "session[password]", with: @user.password
-    click_button "Log In"
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(@user)
   end
   scenario "shows order information" do
     visit admin_dashboard_path

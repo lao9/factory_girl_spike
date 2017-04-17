@@ -4,7 +4,6 @@ RSpec.feature "Unauthenticated user cannot view private user or admin data" do
   scenario "browsing page as unauthenticated user" do
     item1 = create(:item)
     user = create(:user)
-    # date = DateTime.now.strftime("%A %B %e, %Y, %l:%M %p")
 
     visit login_path
     fill_in "session[email]", with: user.email
@@ -38,6 +37,6 @@ RSpec.feature "Unauthenticated user cannot view private user or admin data" do
 
     visit admin_users_path
     expect(page).to have_xpath("//img[@src='http://i.imgur.com/4zZv7CM.jpg']")
-    
+
   end
 end

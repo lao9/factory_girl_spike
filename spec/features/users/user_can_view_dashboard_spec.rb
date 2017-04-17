@@ -10,7 +10,7 @@ feature "user profile" do
     fill_in 'session[password]', with: user.password
     click_on 'Log In'
 
-    expect(current_path).to eq(user_path(user))
+    expect(current_path).to eq(user_path)
 
     click_link "All Pickles"
 
@@ -18,6 +18,6 @@ feature "user profile" do
 
     click_link user.full_name
 
-    expect(current_path).to eq(user_path(user))
+    expect(current_path).to eq(user_path)
   end
 end

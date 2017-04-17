@@ -21,7 +21,7 @@ describe "User can login" do
       fill_in "session[password]", with: @user.password
       click_button "Log In"
 
-      expect(current_path).to eq(user_path(@user))
+      expect(current_path).to eq(user_path)
       expect(page).to have_content("Welcome, #{@user.first_name}!")
       expect(page).to have_content("Logout")
 

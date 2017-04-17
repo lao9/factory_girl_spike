@@ -23,7 +23,7 @@ RSpec.feature "User can create a new account" do
 
       click_on "See what the 'big dill' is about!"
 
-      expect(current_path).to eq(user_path(User.last))
+      expect(current_path).to eq(user_path)
 
       expect(page).to have_content("Successfully logged in!")
       expect(page).to have_content("Dill Pickles")

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       flash[:warning] = "Your password confirmation does not match"
       redirect_to new_user_path
     else
-      flash[:warning] = "There was an problem creating your account. Please try again"
+      flash[:warning] = "There was a problem creating your account. Please try again!"
       redirect_to new_user_path
     end
   end

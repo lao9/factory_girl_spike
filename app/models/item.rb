@@ -11,10 +11,4 @@ class Item < ApplicationRecord
   validates :price, presence: true, :numericality => {greater_than: 0}
   validates :description, presence: true
   validates :title, presence: true, uniqueness: true
-
-
-  def self.image_url
-
-  end
-
 end

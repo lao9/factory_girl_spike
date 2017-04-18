@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: "users#admin_dash"
     resources :users, only: [:index, :show, :edit, :update]
-    resources :items, only: [:new, :create]
+    resources :items, only: [:new, :create, :index, :edit]
   end
 
   match '/send_report', via: :post, to: "admin/users#sales_report"

@@ -7,7 +7,7 @@ class Admin::ItemsController < Admin::BaseController
   def create
     @item = Item.create(item_params)
     if @item.save
-      @item.update(image_url: @item.image.path) unless @item.image.path.nil?
+      @item.update(image_url: @item.image.url) unless @item.image.url == "/images/original/missing.png"
       flash[:success] = "Pickle Successfully Created!"
       redirect_to @item
     else
@@ -28,9 +28,8 @@ class Admin::ItemsController < Admin::BaseController
     @item = Item.find(params[:id])
 
     if @item.update(item_params)
-      @item.update(image_url: @item.image.url)
+      @item.update(image_url: @item.image.url) unless @item.image.url == "/images/original/missing.png"
       flash[:success] = "Item Updated!"
-      # if saved, update url
       redirect_to admin_items_path
     else
       flash.now[:warning] = "Please fill out all fields"

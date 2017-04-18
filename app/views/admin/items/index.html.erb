@@ -1,31 +1,27 @@
-<h1>All Pickles</h1><br>
-
-<div class="row">
-    <% @items.each do |item| %>
-    <div class="col-sm-3 hero-feature">
-      <div class="pickle" id="pickle_<%=item.id%>">
-        <div class="thumbnail">
-          <%= image_tag(item.image_url) %>
-          <div class="caption">
-            <div class="centered">
-              <h2><%= item.title %></h2>
-              <p> <%= item.description %> </p>
-              <p> <%= item.price_format %> </p>
-              <p>
-                <%= render partial: 'shared/add_to_cart_button', :locals => {:item => item} %>
-              </p>
-
-
-              <p> <%= button_to "Edit", edit_admin_item_path(item), method: :get, class: "btn btn-primary"%></p>
-
-
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <% end %>
-</div>
+<h1>All of the pickles</h1>
+<% if !@items.empty? %>
+<img src="https://cdn.meme.am/cache/instances/folder544/500x/76662544/x-all-the-things-all-of-the-pickles.jpg" alt="">
+<table class="table">
+  <th>Item</th>
+  <th>Thumbnail</th>
+  <th>Description</th>
+  <th>Status</th>
+  <th>Edit</th>
+  <% @items.each do |item| %>
+    <tr>
+       <td> <%= link_to item.title, item_path(item) %> </td>
+       <td> <%= image_tag "/assets/#{item.image_url}",  height: 100 %> </td>
+       <td> <%= item.description %> </td>
+       <td> <% if item.retired %>
+              <%= "retired" %>
+            <% else %>
+              <%= "active" %>
+            <% end %>
+       </td>
+       <td> <%= link_to "Edit item", edit_admin_item_path(item) %> </td>
+    </tr>
+  <% end %>
+</table>
+<% else %>
+  <img src="https://cdn.meme.am/cache/instances/folder248/500x/76663248/sad-hyperbole-and-a-half-there-are-no-pickels1.jpg" alt="">
+<% end %>

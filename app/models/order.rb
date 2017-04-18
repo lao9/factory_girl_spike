@@ -16,19 +16,16 @@ class Order < ApplicationRecord
     order_items.sum(:quantity)
   end
 
-  def ordered
-    Order.where(status: "ordered")
+  def self.bestselling
+    OrderItem.group(:item).order('count_id').limit(1).count(:id).first
   end
 
-  def paid
-    Order.where(status: "paid")
+  def self.total_revenue
+    "$%.2f" % Order.joins(:order_items).where.not(status: :cancelled).sum(:subtotal)
   end
 
-  def completed
-     Order.where(status: "completed")
-  end
-  def cancelled
-     Order.where(status: "cancelled")
+  def self.trailing_revenue(q = 7)
+    "$%.2f" % Order.where("orders.created_at >= ?", q.days.ago).where.not(status: :cancelled).joins(:order_items).sum(:subtotal)
   end
 
   enum status: %w(ordered paid cancelled completed)

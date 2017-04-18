@@ -20,7 +20,7 @@ FactoryGirl.define do
   factory :order do
     user
     sequence :status do |n|
-      ["ordered", "paid", "completed", "cancelled"].sample
+      ["ordered", "paid", "completed"].sample
     end
     factory :order_with_many_items do
       order_items {create_list(:order_item, 2)}

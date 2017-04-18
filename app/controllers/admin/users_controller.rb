@@ -26,6 +26,12 @@ class Admin::UsersController < Admin::BaseController
     @orders =  Order
   end
 
+  def sales_report
+    OrderMailer.sales_report(params["Email"]).deliver
+    flash[:success] = "Sales report sent to #{params["Email"]}"
+    redirect_to admin_dashboard_path
+  end
+
   private
 
   def admin_user_params

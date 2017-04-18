@@ -54,7 +54,56 @@ RSpec.feature "User can create a new account" do
     end
   end
   context "when providing not enough information" do
-    # not sure if I need to/how to test this
-    # might be something we can force in the form for
+    scenario "they provide everything except email" do
+      visit new_user_path
+
+      fill_in "user[first_name]", with: "Dill"
+      fill_in "user[last_name]", with: "Pickles"
+      fill_in "user[password]", with: "rugrat2017"
+      fill_in "user[password_confirmation]", with: "rugrat2017"
+
+      click_on "See what the 'big dill' is about!"
+
+      expect(current_path).to eq(new_user_path)
+
+      expect(page).to have_content("There was a problem creating your account. Please try again!")
+
+      expect(page).to have_content("Login")
+      expect(page).to have_content("Sign Up")
+    end
+    scenario "they provide everything except first name" do
+      visit new_user_path
+
+      fill_in "user[last_name]", with: "Pickles"
+      fill_in "user[email]", with: "dpickles@pickle.com"
+      fill_in "user[password]", with: "rugrat2017"
+      fill_in "user[password_confirmation]", with: "rugrat2017"
+
+      click_on "See what the 'big dill' is about!"
+
+      expect(current_path).to eq(new_user_path)
+
+      expect(page).to have_content("There was a problem creating your account. Please try again!")
+
+      expect(page).to have_content("Login")
+      expect(page).to have_content("Sign Up")
+    end
+    scenario "they provide everything except last name" do
+      visit new_user_path
+
+      fill_in "user[first_name]", with: "Dill"
+      fill_in "user[email]", with: "dpickles@pickle.com"
+      fill_in "user[password]", with: "rugrat2017"
+      fill_in "user[password_confirmation]", with: "rugrat2017"
+
+      click_on "See what the 'big dill' is about!"
+
+      expect(current_path).to eq(new_user_path)
+
+      expect(page).to have_content("There was a problem creating your account. Please try again!")
+
+      expect(page).to have_content("Login")
+      expect(page).to have_content("Sign Up")
+    end
   end
 end

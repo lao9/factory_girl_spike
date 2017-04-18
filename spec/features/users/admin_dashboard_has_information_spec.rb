@@ -71,6 +71,13 @@ RSpec.feature "Admin Dashboard"do
     expect(mail.subject).to eq("Your order has been updated")
     expect(page).to have_content("Completed: 2")
   end
+  scenario "analytics are shown" do
+    create(:item_with_many_orders)
+    visit admin_dashboard_path
+    expect(page).to have_content("Bestselling item: ")
+    expect(page).to have_content("Total Revenue all time: $202.00")
+    expect(page).to have_content("Total Revenue last 7 days: $202.00")
+  end
 end
 
 

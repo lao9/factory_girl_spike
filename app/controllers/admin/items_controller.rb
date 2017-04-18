@@ -16,6 +16,10 @@ class Admin::ItemsController < Admin::BaseController
     end
   end
 
+  def index
+    @items = Item.all
+  end
+
   private
 
   def item_params

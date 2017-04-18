@@ -78,7 +78,12 @@ RSpec.feature "Admin Dashboard"do
     expect(page).to have_content("Total Revenue all time: $202.00")
     expect(page).to have_content("Total Revenue last 7 days: $202.00")
   end
+  scenario "analytics are sent as an email" do
+    visit admin_dashboard_path
+    fill_in "Email", with: "test@test.com"
+    click_on "Send Report"
+    mail =  ActionMailer::Base.deliveries.last
+    expect(mail.to).to eq(["test@test.com"])
+    expect(mail.subject).to eq("Pickle progress report")
+  end
 end
-
-
-# - I can click on "mark as completed" on orders that are "paid"

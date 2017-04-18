@@ -15,6 +15,12 @@
     <td><h2> <%= @orders.trailing_revenue %> </h2></td>
   </tr>
 </table>
+<div class="container">
+  <%= form_tag '/send_report', method: :post do %>
+    Email: <%= email_field_tag "Email" %>
+    <%= button_tag "Send Report" %>
+  <% end %>
+</div>
 <% end %>
 
 <h2>All Orders</h2>

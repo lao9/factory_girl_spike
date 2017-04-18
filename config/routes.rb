@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create]
   end
 
+  match '/send_report', via: :post, to: "admin/users#sales_report"
 
 
 

@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20170413225904) do
     t.string   "title"
     t.text     "description"
     t.float    "price"
-    t.string   "image_url"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "image_url",   default: "public/default_pickle.jpg"
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
     t.boolean  "retired",     default: false
   end
 

@@ -65,6 +65,7 @@ FactoryGirl.define do
       n.to_f
     end
 
+
     factory :item_with_categories do
       categories {create_list(:category, 2)}
     end
@@ -72,6 +73,11 @@ FactoryGirl.define do
     factory :item_with_many_orders do
       order_items {create_list(:order_item, 2)}
     end
+  end
+
+  factory :category_item do
+    category
+    item
   end
 
   factory :category do

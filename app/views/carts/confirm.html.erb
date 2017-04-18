@@ -1,9 +1,11 @@
 <h1>Please review and confirm your order.</h1>
 
 <h3>Shipping Address:</h3>
-<%= current_user.full_name %>
-<%= current_user.street %>
-<%= current_user.city %>, <%= current_user.state %> <%= current_user.zipcode %>
+<ul style="list-style-type:none">
+  <li><%= current_user.full_name %></li>
+  <li><%= current_user.street %></li>
+  <li><%= current_user.city %>, <%= current_user.state %> <%= current_user.zipcode %></li>
+</ul>
 
 <%= render partial: 'cart_table' %>
 <div>

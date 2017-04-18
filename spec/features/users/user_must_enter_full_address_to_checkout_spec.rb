@@ -29,7 +29,7 @@ feature "user checkout with address" do
 
       expect(current_path).to eq(confirmation_path)
       expect(page).to have_content("Please review and confirm your order.")
-
+      save_and_open_page
       click_on 'Confirm Order'
       expect(current_path).to eq(order_path(Order.last))
       expect(page).to have_content("Your order has been placed!")

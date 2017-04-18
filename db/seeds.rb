@@ -39,12 +39,12 @@ category.items.create(title: "Pork Tidbits", description: "Your guess is as good
 
 
 
-User.create(first_name: "Dr", last_name: "Picklemeister", email: "a@a.com", password: "password", role: 1)
-User.create(first_name: "Albert", last_name: "Dibbons", email: "a1@a.com", password: "password")
-User.create(first_name: "Bethany", last_name: "Culberth", email: "a2@a.com", password: "password")
-User.create(first_name: "Charles", last_name: "Mielnicowiktz", email: "a3@a.com", password: "password")
-User.create(first_name: "Diana", last_name: "Crivvens", email: "a4@a.com", password: "password")
-User.create(first_name: "Edward", last_name: "Donutbaker", email: "a5@a.com", password: "password")
+User.create(first_name: "Dr", last_name: "Picklemeister", email: "a@a.com", password: "password", role: 1, city: "Denver", state: 'CO', zipcode: '80205')
+User.create(first_name: "Albert", last_name: "Dibbons", email: "a1@a.com", password: "password", city: "New York", state: 'NY', zipcode: '10008')
+User.create(first_name: "Bethany", last_name: "Culberth", email: "a2@a.com", password: "password", city: "Burlington", state: 'VT', zipcode: '80807')
+User.create(first_name: "Charles", last_name: "Mielnicowiktz", email: "a3@a.com", password: "password", city: "Los Angeles", state: 'CA', zipcode: '90018')
+User.create(first_name: "Diana", last_name: "Crivvens", email: "a4@a.com", password: "password", city: "Durham", state: 'NC', zipcode: '27705')
+User.create(first_name: "Edward", last_name: "Donutbaker", email: "a5@a.com", password: "password", city: "Seattle", state: 'WA', zipcode: '98115')
 
 
 (1..6).each do |n|
@@ -55,4 +55,6 @@ User.create(first_name: "Edward", last_name: "Donutbaker", email: "a5@a.com", pa
   subtotal = Item.find(3).price
   user.orders.create.order_items.create(item_id: 5, quantity: 5, subtotal: (subtotal * 5) )
   user.orders.each_with_index {|order, index| order.update(status: rand(0..3))}
+  puts "Updated User #{n}, #{user.full_name}"
+  user.update(street: "#{n} Pickle Lane")
 end

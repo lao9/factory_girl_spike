@@ -118,7 +118,7 @@ feature "admin can modify their account info" do
 
     expect(current_path).to eq(admin_users_path)
 
-    click_link "#{@user.last_name}, #{@user.first_name}, #{@user.email}"
+    click_link "#{@user.full_name}"
 
     expect(current_path).to eq(admin_user_path(@user))
     expect(page).to have_content(@user.first_name)
@@ -137,7 +137,7 @@ feature "admin can modify their account info" do
 
     expect(current_path).to eq(admin_users_path)
 
-    click_link "#{@admin_user2.last_name}, #{@admin_user2.first_name}, #{@admin_user2.email}"
+    click_link "#{@admin_user2.full_name}"
 
     expect(current_path).to eq(admin_user_path(@admin_user2))
     expect(page).to have_content(@admin_user2.first_name)

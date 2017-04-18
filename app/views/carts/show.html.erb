@@ -1,6 +1,6 @@
 <h1>Your Cart</h1>
 
-<%= render partial: 'shared/view_past_order_link' %>
+<%= render partial: 'shared/view_past_order_link' if current_user %>
 
 <% if @cart.empty? %>
   <%= render partial: 'cart_empty' %>

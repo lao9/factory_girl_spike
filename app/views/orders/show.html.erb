@@ -12,7 +12,7 @@
   <% @order_items.each do |order_item| %>
   <tr>
     <td>
-      <img src="<%=order_item.item.image_url%>" width="100" alt="<%=order_item.item.title%>">
+      <%= image_tag(order_item.item.image_url, :width => '100')%>
     </td>
     <td>
       <h3><%= link_to order_item.item.title, item_path(order_item.item) %></h3>

@@ -1,0 +1,31 @@
+<h1>All Pickles</h1><br>
+
+<div class="row">
+    <% @items.each do |item| %>
+    <div class="col-sm-3 hero-feature">
+      <div class="pickle" id="pickle_<%=item.id%>">
+        <div class="thumbnail">
+          <%= image_tag(item.image_url) %>
+          <div class="caption">
+            <div class="centered">
+              <h2><%= item.title %></h2>
+              <p> <%= item.description %> </p>
+              <p> <%= item.price_format %> </p>
+              <p>
+                <%= render partial: 'shared/add_to_cart_button', :locals => {:item => item} %>
+              </p>
+
+
+              <p> <%= button_to "Edit", edit_admin_item_path(item), method: :get, class: "btn btn-primary"%></p>
+
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+</div>

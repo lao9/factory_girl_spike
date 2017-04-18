@@ -10,4 +10,8 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def empty_address?
+    street.nil? || city.nil? || state.nil? || zipcode.nil?
+  end
 end

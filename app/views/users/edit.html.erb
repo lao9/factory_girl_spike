@@ -1,0 +1,19 @@
+<h1>Please enter your shipping address:</h1>
+
+<%= form_for @display_user, url:update_user_path do |f| %>
+
+  <%= f.label :street %>
+  <%= f.text_field :street %>
+
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+
+  <%= f.label :state %>
+  <%= f.select :state, options_for_select(us_states) %>
+
+  <%= f.label :zipcode %>
+  <%= f.text_field :zipcode %>
+
+  <%= f.submit "Complete Checkout" %>
+
+<% end %>

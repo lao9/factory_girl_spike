@@ -1,0 +1,14 @@
+<h1>Please review and confirm your order.</h1>
+
+<h3>Shipping Address:</h3>
+<%= current_user.full_name %>
+<%= current_user.street %>
+<%= current_user.city %>, <%= current_user.state %> <%= current_user.zipcode %>
+
+<%= render partial: 'cart_table' %>
+<div>
+  <h4>Total Price: <%= @cart.cart_total %></h4>
+  <h4>Total Quantity: <%= @cart.cart_quantity %></h4>
+</div>
+
+<%= button_to "Confirm Order", orders_path, class: 'checkout' %>

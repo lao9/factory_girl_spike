@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   get '/dashboard', to: 'users#show', as: 'user'
-
+  get '/shipping', to: 'users#edit', as: 'edit_user'
+  patch '/shipping', to: 'users#update', as: 'update_user'
+  get '/confirmation', to: 'carts#confirm', as: 'confirmation'
 
   resources :items, only: [:index, :show]
 

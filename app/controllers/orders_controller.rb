@@ -10,12 +10,11 @@ class OrdersController < ApplicationController
   end
 
   def create
-
     @order = Order.create(user_id: session[:user_id])
-
     @order.order_items << @cart.list
     session[:cart] = nil
     OrderMailer.new_order(@order.user, @order).deliver
+    flash[:success] = "Your order has been placed!"
     redirect_to order_path(@order)
   end
 

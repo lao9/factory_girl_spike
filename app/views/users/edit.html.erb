@@ -14,6 +14,8 @@
   <%= f.label :zipcode %>
   <%= f.text_field :zipcode %>
 
-  <%= f.submit "Complete Checkout" %>
+  <%= f.submit "Update Address" %>
+
+  <%= hidden_field_tag 'token', @post_url %>
 
 <% end %>

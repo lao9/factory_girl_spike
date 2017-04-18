@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
 
   def index
-    # binding.pry
     unless current_user
       render :file => 'public/404.html', :status => :not_found
     else

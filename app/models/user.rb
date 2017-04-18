@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def empty_address?
     street.nil? || city.nil? || state.nil? || zipcode.nil?
   end
+
+  def city_state_zip
+    "#{city}, #{state} #{zipcode}"
+  end
 end

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
-
+  helper_method :check_path
   helper_method :us_states
 
   before_action :set_cart
@@ -12,16 +12,21 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    # if session[:user_id]
-    #   User.find(session[:user_id])
-    # else
-    #   User.new(username: "GUEST")
-    # end
     @user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def current_admin?
     current_user && current_user.admin?
+  end
+
+  def check_path(path)
+    if path.nil?
+      user_path
+    elsif path.include?("/cart") || path.include?("/confirmation")
+      confirmation_path
+    else
+      user_path
+    end
   end
 
   def us_states

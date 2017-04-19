@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418221201) do
+ActiveRecord::Schema.define(version: 20170419191353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20170418221201) do
     t.string   "title"
     t.text     "description"
     t.float    "price"
-    t.string   "image_url",          default: "public/default_pickle.jpg"
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
+    t.string   "image_url"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.boolean  "retired",            default: false
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -59,6 +59,18 @@ ActiveRecord::Schema.define(version: 20170418221201) do
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "rating"
+    t.text     "body"
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_reviews_on_item_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string  "first_name"
     t.string  "last_name"
@@ -76,4 +88,6 @@ ActiveRecord::Schema.define(version: 20170418221201) do
   add_foreign_key "order_items", "items"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "reviews", "items"
+  add_foreign_key "reviews", "users"
 end

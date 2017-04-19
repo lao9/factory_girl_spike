@@ -4,6 +4,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   has_many :orders
+  has_many :reviews
 
   enum role: %w(default admin)
 

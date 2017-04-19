@@ -11,24 +11,32 @@
   <h4>Reviews: <%=" #{@item.reviews.count} "%></h4>
   <h4>Average Rating: <%= @item.reviews.average(:rating) %> </h4>
   <% @item.reviews.each do |review| %>
-  <div class="card">
-    <div class="card-block">
-      <p>User: <%= review.user.first_name %></p>
-      <p>Rating: <%= review.rating %></p>
-      <p>Title: <%= review.title %></p>
-      <p>Body: <%= review.body %></p>
+    <div class="card">
+      <div class="card-block">
+        <p>User: <%= review.user.first_name %></p>
+        <p>Rating: <%= review.rating %></p>
+        <p>Title: <%= review.title %></p>
+        <p>Body: <%= review.body %></p>
+        <p>Date: <%= review.created_at.strftime("%a, %b %d, %Y") %> </p>
+        <% if current_user && current_user.admin? %>
+          <%= button_to "Delete Review", review_path(review), method: :delete %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <hr>
+    <hr>
   <% end %>
-  <h2>Add your own review</h2>
-  <%= form_for @item.reviews.new do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label "Review" %>
-    <%= f.text_area :body %>
-    <%= f.label :rating %>
-    <%= f.select :rating, (1..5) %>
-    <%= f.submit "Submit Review" %>
+
+  <% if current_user && !current_user.admin? %>
+    <h2>Add your own review</h2>
+    <%= form_for @item.reviews.new do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+      <%= f.label "Review" %>
+      <%= f.text_area :body %>
+      <%= f.label :rating %>
+      <%= f.select :rating, (1..5) %>
+      <%= f.hidden_field :item_id, value: @item.id %>
+      <%= f.submit "Submit Review" %>
+    <% end %>
   <% end %>
 </div>

@@ -28,23 +28,15 @@ RSpec.feature "User can see reviews" do\
       fill_in "Title", with: "Filled in title"
       select(5, from: "Rating")
       click_on "Submit Review"
+
+      visit item_path(review.item)
+
+      save_and_open_page
+      expect(page).to have_content("Reviews: 2")
+      expect(page).to have_content("Filled in review")
+      expect(page).to have_content("Filled in title")
+      expect(page).to have_content(review.user.first_name)
+      expect(page).to have_content("Rating: 5")
     end
   end
 end
-# As a default user
-#
-# context: an item already has a single review
-#
-# When I visit an item's show page
-#
-# And I fill in my review and the rating
-#
-# And I click Submit
-#
-# I should still be on that item's show page
-#
-# And I should see "Reviews (2):"
-#
-# And I see my review at the top
-#
-# And I see the older review at the bottom

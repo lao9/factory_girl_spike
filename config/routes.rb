@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   match '/send_report', via: :post, to: "admin/users#sales_report"
 
 
-  resources :reviews, only: [:create]
+  resources :reviews, only: [:create, :destroy]
 
 
 

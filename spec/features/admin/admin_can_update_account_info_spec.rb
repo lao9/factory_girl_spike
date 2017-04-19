@@ -8,15 +8,14 @@ feature "admin can modify their account info" do
     @user = create(:user)
   end
   scenario "admin can change their first name" do
-    visit login_path
 
-    fill_in "session[email]", with: @admin_user.email
-    fill_in "session[password]", with: @admin_user.password
-    click_button "Log In"
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(@admin_user)
 
-    click_link @admin_user.full_name
+    visit user_path
 
-    expect(current_path).to eq(admin_user_path(@admin_user))
+    expect(current_path).to eq(user_path)
     expect(page).to have_content(@admin_user.first_name)
     expect(page).to have_content(@admin_user.last_name)
     expect(page).to have_content(@admin_user.email)
@@ -38,15 +37,14 @@ feature "admin can modify their account info" do
     expect(User.find(@admin_user.id).first_name).to eq(new_first_name)
   end
   scenario "admin can change their last name" do
-    visit login_path
 
-    fill_in "session[email]", with: @admin_user.email
-    fill_in "session[password]", with: @admin_user.password
-    click_button "Log In"
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(@admin_user)
 
-    click_link @admin_user.full_name
+    visit user_path
 
-    expect(current_path).to eq(admin_user_path(@admin_user))
+    expect(current_path).to eq(user_path)
     expect(page).to have_content(@admin_user.first_name)
     expect(page).to have_content(@admin_user.last_name)
     expect(page).to have_content(@admin_user.email)
@@ -120,7 +118,7 @@ feature "admin can modify their account info" do
 
     expect(current_path).to eq(admin_users_path)
 
-    click_link "#{@user.last_name}, #{@user.first_name}, #{@user.email}"
+    click_link "#{@user.full_name}"
 
     expect(current_path).to eq(admin_user_path(@user))
     expect(page).to have_content(@user.first_name)
@@ -129,11 +127,9 @@ feature "admin can modify their account info" do
     expect(page).to_not have_button("Edit Account Information")
   end
   scenario "admin cannot modify another admin's account info" do
-    visit login_path
-
-    fill_in "session[email]", with: @admin_user.email
-    fill_in "session[password]", with: @admin_user.password
-    click_button "Log In"
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(@admin_user)
 
     visit admin_dashboard_path
 
@@ -141,7 +137,7 @@ feature "admin can modify their account info" do
 
     expect(current_path).to eq(admin_users_path)
 
-    click_link "#{@admin_user2.last_name}, #{@admin_user2.first_name}, #{@admin_user2.email}"
+    click_link "#{@admin_user2.full_name}"
 
     expect(current_path).to eq(admin_user_path(@admin_user2))
     expect(page).to have_content(@admin_user2.first_name)

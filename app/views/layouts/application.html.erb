@@ -62,11 +62,8 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user && current_user.admin? %>
-              <li>
-                <%= link_to admin_dashboard_path do %>
-                  <span class="glyphicon glyphicon-dashboard"></span>
-                Admin Dashboard
-                <% end %>
+              <li class=dropdown>
+                <%= render partial: 'shared/admin_dash_path' %>
               </li>
             <% end %>
             <% if current_user %>

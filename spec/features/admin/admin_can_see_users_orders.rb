@@ -10,10 +10,9 @@ RSpec.feature 'Admin logs in' do
     item1 = create(:item)
     date = DateTime.now.strftime("%A %B %e, %Y, %l:%M %p")
 
-    visit login_path
-    fill_in "session[email]", with: user.email
-    fill_in "session[password]", with: user.password
-    click_button "Log In"
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
 
     visit items_path
 
@@ -23,11 +22,6 @@ RSpec.feature 'Admin logs in' do
     click_on "View Cart"
     click_on "Checkout"
     click_on "logout"
-
-
-
-
-
 
     expect(page).to have_content(item1.title)
     expect(page).to have_content(item1.description)
@@ -42,28 +36,9 @@ RSpec.feature 'Admin logs in' do
     expect(page).to have_content("Current Status: ordered on #{date}")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#################
-
-
-    visit login_path
-    fill_in "session[email]", with: admin.email
-    fill_in "session[password]", with: admin.password
-    click_button "Log In"
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(admin)
 
     click_button "View All Users"
 

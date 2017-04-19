@@ -14537,6 +14537,20 @@ return jQuery;
   App.cable = ActionCable.createConsumer();
 
 }).call(this);
+$(document).ready(function(){
+
+  $('ul.nav li.dropdown').hover(function(){
+
+    $('.dropdown-menu', this).fadeIn();
+
+  }, function(){
+
+    $('.dropdown-menu', this).fadeOut('fast');
+
+  });
+
+
+});
 /*!
  * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.

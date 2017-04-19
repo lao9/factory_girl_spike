@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   get '/dashboard', to: 'users#show', as: 'user'
-
+  get '/shipping', to: 'users#edit', as: 'edit_user'
+  patch '/shipping', to: 'users#update', as: 'update_user'
+  get '/confirmation', to: 'carts#confirm', as: 'confirmation'
 
   resources :items, only: [:index, :show]
 
@@ -24,13 +26,13 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: "users#admin_dash"
     resources :users, only: [:index, :show, :edit, :update]
+    resources :items, only: [:new, :create, :index, :edit, :update]
   end
 
+  match '/send_report', via: :post, to: "admin/users#sales_report"
 
 
-
-
-
+  resources :reviews, only: [:create, :destroy]
 
 
 

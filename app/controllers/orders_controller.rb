@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
   def show
     @order= Order.find(params[:id])
     @order_items = @order.order_items
+    @display_user = @order.user
   end
 
   def update

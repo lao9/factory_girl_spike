@@ -14,11 +14,32 @@
 
 require 'rails_helper'
 
-# feature "admin order page" do
-#   scenario "admin can view " do
-#
-#   end
-#   user = create(:user_with_orders)
-#   admin = create(:user).update(role: 1)
-#
-# end
+feature "order show page" do
+  before :each do
+    @user = create(:user_with_orders)
+    @admin = create(:user)
+    @admin.update(role: 1)
+    @order = @user.orders.first
+    @order_item1, @order_item2 = @order.order_items
+  end
+  scenario "admin can view " do
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(@admin)
+
+    visit admin_dashboard_path
+    click_link @order.id
+
+    expect(page).to have_content(@order.order_date)
+    expect(page).to have_content(@user.full_name)
+    expect(page).to have_content(@user.street)
+    expect(page).to have_content(@user.city_state_zip)
+    expect(page).to have_link(@order_item1.item.title)
+    expect(page).to have_content(@order_item1.item.price)
+    expect(page).to have_content(@order_item1.quantity)
+    expect(page).to have_content(@order_item1.subtotal)
+    expect(page).to have_content(@order.total_price)
+    expect(page).to have_content(@order.total_quantity)
+    expect(page).to have_content(@order.status)
+  end
+end

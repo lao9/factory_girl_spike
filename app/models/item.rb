@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_many :categories, through: :category_items
   has_many :order_items
   has_many :orders, through: :order_items
+  has_many :reviews
 
   has_attached_file :image, styles: { medium: "200x200>", small: "100x100>" }
 

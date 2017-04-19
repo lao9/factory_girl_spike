@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.string    :title
       t.text      :description
       t.float     :price
-      t.string    :image_url, default: "public/default_pickle.jpg"
+      t.string    :image_url, default: "picolas_cage.jpg"
 
       t.timestamps null: false
     end

@@ -14,11 +14,11 @@
 
 require 'rails_helper'
 
-feature "admin order page" do
-  scenario "admin can view " do
-    
-  end
-  user = create(:user_with_orders)
-  admin = create(:user).update(role: 1)
-
-end
+# feature "admin order page" do
+#   scenario "admin can view " do
+#
+#   end
+#   user = create(:user_with_orders)
+#   admin = create(:user).update(role: 1)
+#
+# end

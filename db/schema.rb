@@ -31,9 +31,19 @@ ActiveRecord::Schema.define(version: 20170413225904) do
     t.text     "description"
     t.float    "price"
     t.string   "image_url"
+<<<<<<< Updated upstream
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "retired",     default: false
+=======
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "retired",            default: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+>>>>>>> Stashed changes
   end
 
   create_table "order_items", force: :cascade do |t|

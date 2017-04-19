@@ -32,6 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rspec-pride'
 gem "twitter-bootstrap-rails"
 gem 'rspec-pride'
+gem 'paperclip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

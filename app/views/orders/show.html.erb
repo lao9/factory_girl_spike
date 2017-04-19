@@ -1,4 +1,11 @@
-<h1>Order #<%=@order.id%></h1>
+<h1>Order #<%=@order.id%> for <%=@display_user.full_name%></h1>
+
+<h3>Purchased on <%= @order.order_date %></h3>
+<h3>Order Status: <%= @order.status %></h3>
+
+<div class="well">
+  <%= render partial: 'shared/user_address' %>
+</div>
 
 <table class=table>
   <tr>
@@ -6,7 +13,6 @@
     <th>Item</th>
     <th>Price</th>
     <th>Quantity</th>
-    <th></th>
     <th>Subtotal</th>
   </tr>
   <% @order_items.each do |order_item| %>
@@ -33,9 +39,5 @@
   <% end %>
 </table>
 
-
-Total Price: <%= @order.total_price %>
-Total Quantity: <%= @order.total_quantity %>
-Purchase Date: <%= @order.order_date %>
-Current Status: ordered on <%= @order.order_date %>
-<!-- Current Status: <%#= @order.status %> uncomment when status enum is added-->
+<h4>Total Price: <%= @order.total_price %></h4>
+<h4>Total Quantity: <%= @order.total_quantity %></h4>

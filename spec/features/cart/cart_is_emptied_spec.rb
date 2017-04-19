@@ -42,7 +42,8 @@ RSpec.feature "Cart is emptied" do
 
     click_on "View Cart"
     click_on "Checkout"
-    mail =  ActionMailer::Base.deliveries.first
+    click_on "Confirm Order"
+    mail =  ActionMailer::Base.deliveries.last
     expect(mail.from).to eq(["MrPickles@WeCanPickleThat.com"])
     expect(mail.subject).to eq("Your order has been placed")
     click_on "View Cart"

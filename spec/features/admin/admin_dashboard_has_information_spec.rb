@@ -75,8 +75,8 @@ RSpec.feature "Admin Dashboard"do
     create(:item_with_many_orders)
     visit admin_dashboard_path
     expect(page).to have_content("Bestselling item: ")
-    expect(page).to have_content("Total Revenue all time: $242.00")
-    expect(page).to have_content("Total Revenue last 7 days: $242.00")
+    expect(page).to have_content("Total Revenue all time: $202.00")
+    expect(page).to have_content("Total Revenue last 7 days: $202.00")
   end
   scenario "analytics are sent as an email" do
     visit admin_dashboard_path

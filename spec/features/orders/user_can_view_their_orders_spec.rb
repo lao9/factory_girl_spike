@@ -40,11 +40,11 @@ feature "when a user visits their orders page" do
 
       page.has_selector?(:xpath, '/html/body/div[2]/div/table/tbody/tr[2]/td[4]')   #
       expect(page).to have_content("Total Price: #{order.total_price}")
-      expect(page).to have_content("Purchase Date: #{date}")
+      expect(page).to have_content("Purchased on #{date}")
       expect(page).to have_link(item1.title, href: item_path(item1))
       expect(page).to have_css("img[src*='#{item1.image_url}']")
 
-      expect(page).to have_content("Current Status: ordered on #{date}")
+      expect(page).to have_content("Order Status: #{order.status}")
     end
     scenario "user with several past orders can view them" do
       user = create(:user)

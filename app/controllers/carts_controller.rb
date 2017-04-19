@@ -27,4 +27,13 @@ class CartsController < ApplicationController
     @cart.update(params[:item_id], params[:cart][:quantity])
     redirect_to cart_path
   end
+
+  def confirm
+    if current_user.empty_address?
+      redirect_to edit_user_path
+    else
+      @cart = Cart.new(session[:cart])
+      @order_items = @cart.list
+    end
+  end
 end

@@ -63,6 +63,9 @@ User.first.orders.first.update(created_at: 90.days.ago)
 User.second.orders.update_all(created_at: 20.days.ago)
 User.last.orders.update_all(created_at: 2.years.ago)
 
+Order.all.sample(3).each do |order|
+  order.update(created_at: (Time.now - 30.days))
+end
 
 Review.create(title: "Amazing", body: "I can't even describe the luscious crunch of this pickled item.", rating: 5, user_id: 2, item_id: 1)
 Review.create(title: "Meh", body: "Whatever.", rating: 2, user_id: 2, item_id: 1)

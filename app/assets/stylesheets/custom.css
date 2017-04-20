@@ -11,10 +11,29 @@
 
 .centered {
   position: absolute;
-  /*left: 50%;*/
   top: 40%;
   width: 80%;
   text-align: center;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.carousel img {
+  width: 100%;
+}
+
+.carousel-inner {
+  height: 400px;
+}
+
+.carousel-caption {
+  top: 100px;
+}
+
+.headshot {
+  left: 200px;
+  width: 150px;
 }
 
 .checkbox-list input[type="checkbox"] {

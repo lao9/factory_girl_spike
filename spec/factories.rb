@@ -17,6 +17,18 @@ FactoryGirl.define do
     end
   end
 
+  factory :review do
+    user
+    item
+    sequence :title do |n|
+      "title #{n}"
+    end
+    body "body"
+    sequence :rating do
+      rand(1..5)
+    end
+  end
+
   factory :order do
     user
     sequence :status do |n|

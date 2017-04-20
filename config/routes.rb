@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'items#index'
+  root to: 'home#index'
+
+  get '/home', to: 'home#index'
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
@@ -30,7 +32,7 @@ Rails.application.routes.draw do
   match '/send_report', via: :post, to: "admin/users#sales_report"
 
 
-
+  resources :reviews, only: [:create, :destroy]
 
 
 

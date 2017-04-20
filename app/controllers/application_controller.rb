@@ -20,9 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_path(path)
-    if path.nil?
-      user_path
-    elsif path.include?("/cart") || path.include?("/confirmation")
+    if !path.nil? && (path.include?("/cart") || path.include?("/confirmation"))
       confirmation_path
     else
       user_path

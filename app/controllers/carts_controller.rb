@@ -18,7 +18,6 @@ class CartsController < ApplicationController
   def remove
     @item = Item.find(params[:item_id])
     @cart.contents.delete(params[:item_id])
-
     flash[:success] = "Successfully removed <a href='/items/#{@item.id}' > #{@item.title}</a> from your cart.".html_safe
     redirect_to cart_path
   end

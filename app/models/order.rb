@@ -1,8 +1,10 @@
 class Order < ApplicationRecord
   has_many :order_items
   has_many :items, through: :order_items
-
   belongs_to :user
+
+  after_create :send_order_confirmation
+  after_update :send_order_update_email
 
   def order_date
     created_at.in_time_zone("Mountain Time (US & Canada)").strftime("%A %B %e, %Y, %l:%M %p")
@@ -38,4 +40,13 @@ class Order < ApplicationRecord
 
   enum status: %w(ordered paid cancelled completed)
 
+  private
+
+  def send_order_confirmation
+    OrderMailer.new_order(user, self).deliver
+  end
+
+  def send_order_update_email
+    OrderMailer.update(user, self).deliver
+  end
 end

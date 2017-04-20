@@ -1,13 +1,15 @@
-<h1>Order #<%=@order.id%> for <%=@display_user.full_name%></h1>
+<div class="whiteblock">
+<h1><span class="whiteblock"Order #<%=@order.id%> for <%=@display_user.full_name%></span></h1>
 
-<h3>Purchased on <%= @order.order_date %></h3>
-<h3>Order Status: <%= @order.status %></h3>
+<h3><span class="whiteblock">Purchased on <%= @order.order_date %></span></h3>
+<h3><span class="whiteblock">Order Status: <%= @order.status %></span></h3>
 
 <div class="well">
   <%= render partial: 'shared/user_address' %>
 </div>
 
 <table class=table>
+  <div class="whiteblock">
   <tr>
     <th></th>
     <th>Item</th>
@@ -37,7 +39,9 @@
 
   </tr>
   <% end %>
+</div>
 </table>
 
 <h4>Total Price: <%= @order.total_price %></h4>
 <h4>Total Quantity: <%= @order.total_quantity %></h4>
+</div>

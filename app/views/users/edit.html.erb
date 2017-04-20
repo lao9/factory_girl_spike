@@ -1,5 +1,6 @@
-<h1>Please enter your shipping address:</h1>
+<h1><span class="whiteblock">Please enter your shipping address:</span></h1>
 
+<div class="whiteblock">
 <%= form_for @display_user, url:update_user_path do |f| %>
 
   <%= f.label :street %>
@@ -19,3 +20,4 @@
   <%= hidden_field_tag 'token', @post_url %>
 
 <% end %>
+</div>

@@ -1,20 +1,35 @@
-<%= form_for @item, url: admin_item_path(@item) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :price%>
-  <%= f.text_field :price%>
-  <%= f.label :image_url%>
-  <%= f.text_field :image_url%>
-  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name)%>
+<h1>Update <%= @item.title %></h1>
 
-  <p>
-  <% if @item.image.exists? %>
-      <%= image_tag @item.image.url(:medium) %><br/>
-  <% end %>
-  <%= f.label :image, "Attach a New Image" %><br />
-  <%= f.file_field :image %>
-</p>
-<%= f.submit %>
+<%= form_for @item, html: {class: 'well'}, url: admin_item_path(@item) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price%>
+    $<%= f.number_field :price, min: 0, value: number_to_currency(f.object.price.to_f, delimiter: '', unit: ''), step: :any %>
+</div>
+
+  <div class="row">
+    <div class="col-md-4 checkbox-list">
+      <h4>Select Item Category:</h4>
+      <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name)%>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <% if @item.image.exists? %>
+    <%= image_tag @item.image.url(:medium) %><br/>
+    <% end %>
+    <%= f.label :image, "Attach a New Image" %><br />
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Update Item", class: 'btn btn-primary'%>
 <% end %>

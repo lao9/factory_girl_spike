@@ -29,14 +29,13 @@ category.items.create(title: "Pickled Plum", description: "A Japanese favorite",
 category.items.create(title: "Strawberries", description: "Great for making a sauce or pie filling", price: 5, image_url: "strawberry.jpg")
 
 category = Category.create(name:"Meat")
-category.items.create(title: "Bay View Pickled Eggs", description: "A staple food of old dive bars around the country", price: 10, image_url: "eggs_jar.jpg")
+category.items.create(title: "Bay View Pickled Eggs", description: "A staple food of old dive bars around the country", price: 10, image_url: "eggs_jar.jpg", retired: true)
 category.items.create(title: "Herring Filets", description: "Pickled in a white wine sauce. A treat no Scandinavian can resist.", price: 7, image_url: "Herring_Filets_jar.png")
 category.items.create(title: "Mystery Meat", description: "??????????", price: 2, image_url: "mystery_jar.jpg")
 category.items.create(title: "Pig Lips", description: "Yep, this is a thing for some reason.", price: 4, image_url: "pig_lips.jpg")
 category.items.create(title: "Pig Snout", description: "Why? Just...why??", price: 3, image_url: "snout_jar.jpg")
 category.items.create(title: "Canned Squirrel", description: "Back by popluar demand.", price: 8, image_url: "squirrel_in_jar.jpg")
 category.items.create(title: "Pork Tidbits", description: "Your guess is as good as mine", price: 2, image_url: "tidbits_jar copy.jpg")
-
 
 
 User.create(first_name: "Dr", last_name: "Picklemeister", email: "a@a.com", password: "password", role: 1, city: "Denver", state: 'CO', zipcode: '80205')
@@ -67,6 +66,7 @@ Order.all.sample(3).each do |order|
   order.update(created_at: (Time.now - 30.days))
 end
 
-Review.create(title: "Amazing", body: "I can't even describe the luscious crunch of this pickled item.", rating: 5, user_id: 2, item_id: 1)
-Review.create(title: "Meh", body: "Whatever.", rating: 2, user_id: 2, item_id: 1)
+Review.create(title: "Amazing", body: "I can't even describe the luscious crunch of this pickled item.", rating: 5, user_id: 2, item_id: 1, created_at: 90.days.ago)
+Review.create(title: "Meh", body: "Whatever.", rating: 2, user_id: 2, item_id: 1, created_at: 20.days.ago)
 Review.create(title: "Bad", body: "Not good.", rating: 1, user_id: 4, item_id: 4)
+Review.create(title: "Disappointed", body: "When I opened this jar of pickles I nearly killed my family.", rating: 1, user_id: 3, item_id: 13, created_at: 2.days.ago)

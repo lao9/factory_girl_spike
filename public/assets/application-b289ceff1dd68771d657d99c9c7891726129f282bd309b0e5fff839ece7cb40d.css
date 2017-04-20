@@ -20,19 +20,24 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .main-content {
   margin-bottom: 4em ;
 }
+/* line 1, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .retired {
-  color: #a0030b
+  color: #a0030b;
 }
+
+/* line 4, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .thumbnail {
   height: 40em;
 }
 
+/* line 8, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .thumbnail img {
   max-width: 200px;
   max-height: 200px;
   display: block;
 }
 
+/* line 14, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .centered {
   position: absolute;
   top: 40%;
@@ -43,27 +48,33 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
   hyphens: auto;
 }
 
+/* line 24, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .carousel img {
   width: 100%;
 }
 
+/* line 28, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .carousel-inner {
   height: 400px;
 }
 
+/* line 32, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .carousel-caption {
   top: 100px;
 }
 
+/* line 36, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .headshot {
   left: 200px;
   width: 150px;
 }
 
+/* line 41, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 body {
-  background: url('rustic-wall-panels.jpg');
+  background: url(/assets/rustic-wall-panels-7e317e8dee8d6bd94c306a3c8129928844b83c13858b6a29dcd527f35b926385.jpg);
 }
 
+/* line 45, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .whiteblock {
   background-color: white;
   padding-left: 15px;
@@ -73,11 +84,13 @@ body {
   opacity: .8;
 }
 
+/* line 54, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .checkbox-list input[type="checkbox"] {
   display: inline-block;
   width: 10%;
 }
 
+/* line 59, /Users/loliveri/Documents/turing/mod2/5_week/we_can_pickle_that/app/assets/stylesheets/custom.scss */
 .checkbox-list input[type="checkbox"] + label {
   display: inline-block;
   margin-left: 10%;

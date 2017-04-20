@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+  before_action :set_order, only: [:update, :show]
   def index
     unless current_user
       render :file => 'public/404.html', :status => :not_found
@@ -12,26 +12,24 @@ class OrdersController < ApplicationController
     @order = Order.create(user_id: session[:user_id])
     @order.order_items << @cart.list
     session[:cart] = nil
-    OrderMailer.new_order(@order.user, @order).deliver
     flash[:success] = "Your order has been placed!"
     redirect_to order_path(@order)
   end
 
   def show
-    @order= Order.find(params[:id])
     @order_items = @order.order_items
     @display_user = @order.user
   end
 
   def update
-    order = Order.find(params[:id])
-    order.update(status: params[:status])
-    OrderMailer.update(order.user, order).deliver
+    @order.update(status: params[:status])
     redirect_back(fallback_location: root_path)
   end
 
-private
+  private
 
-
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
 end

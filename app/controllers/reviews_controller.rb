@@ -7,8 +7,9 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
+    @item = @review.item
     @review.destroy
-    redirect_to items_path
+    redirect_to item_path(@item)
   end
 
   private

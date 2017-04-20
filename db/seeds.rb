@@ -51,10 +51,19 @@ User.create(first_name: "Edward", last_name: "Donutbaker", email: "a5@a.com", pa
   user = User.find(n)
   subtotal = Item.find(1).price
   user.orders.create.order_items.create(item_id: 1, quantity: 1, subtotal: subtotal)
-  user.orders.create.order_items.create(item_id: 1, quantity: 2, subtotal: (subtotal * 2) )
+  user.orders.create.order_items.create(item_id: 1, quantity: 6, subtotal: (subtotal * 6) )
   subtotal = Item.find(3).price
-  user.orders.create.order_items.create(item_id: 5, quantity: 5, subtotal: (subtotal * 5) )
+  user.orders.create.order_items.create(item_id: 5, quantity: 12, subtotal: (subtotal * 12) )
   user.orders.each_with_index {|order, index| order.update(status: rand(0..3))}
   puts "Updated User #{n}, #{user.full_name}"
   user.update(street: "#{n} Pickle Lane")
 end
+
+User.first.orders.first.update(created_at: 90.days.ago)
+User.second.orders.update_all(created_at: 20.days.ago)
+User.last.orders.update_all(created_at: 2.years.ago)
+
+
+Review.create(title: "Amazing", body: "I can't even describe the luscious crunch of this pickled item.", rating: 5, user_id: 2, item_id: 1)
+Review.create(title: "Meh", body: "Whatever.", rating: 2, user_id: 2, item_id: 1)
+Review.create(title: "Bad", body: "Not good.", rating: 1, user_id: 4, item_id: 4)

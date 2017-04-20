@@ -26,6 +26,13 @@ class Admin::UsersController < Admin::BaseController
     @orders =  Order
   end
 
+  def analytics
+    @orders = Order
+    @users = User
+    @items = Item
+  end
+
+
   def sales_report
     OrderMailer.sales_report(params["Email"]).deliver
     flash[:success] = "Sales report sent to #{params["Email"]}"

@@ -18,4 +18,16 @@ class Item < ApplicationRecord
   def update_paperclip_image
     update(image_url: image.url)
   end
+
+
+  def self.most_reviewed_item
+    Item.find(Review.group(:item_id).count.max_by { |k, v| v}.first) unless Review.count == 0
+  end
+
+  def self.most_expensive_item
+    Item.find_by(price: Item.maximum(:price))
+  end
+
+
+
 end

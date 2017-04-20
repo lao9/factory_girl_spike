@@ -19,4 +19,12 @@ class User < ApplicationRecord
   def city_state_zip
     "#{city}, #{state} #{zipcode}"
   end
+
+  def self.highest_reviewer
+    unless Review.count == 0
+      user = User.find(Review.group(:user_id).count.max_by { |k, v| v}.first)
+      "#{user.full_name}, Reviews: #{user.reviews.count}"
+    end
+  end
+
 end

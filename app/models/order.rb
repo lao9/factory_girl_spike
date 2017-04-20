@@ -28,6 +28,14 @@ class Order < ApplicationRecord
     "$%.2f" % Order.where("orders.created_at >= ?", q.days.ago).where.not(status: :cancelled).joins(:order_items).sum(:subtotal)
   end
 
+  def self.total_items_sold
+    Order.where.not(status: :cancelled).joins(:order_items).sum(:quantity)
+  end
+
+  def self.sales(n = 7)
+    Order.where("orders.created_at >= ?", n.days.ago).where.not(status: :cancelled).joins(:order_items).sum(:quantity)
+  end
+
   enum status: %w(ordered paid cancelled completed)
 
 end

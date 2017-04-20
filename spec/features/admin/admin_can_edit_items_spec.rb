@@ -86,8 +86,6 @@ RSpec.feature "Admin can edit items" do
       visit admin_items_path
       click_on "Edit"
 
-      save_and_open_page
-      
       expect(current_path).to eq("/admin/items/#{item.id}/edit")
 
       fill_in "Title", with: "Jalapeños con conejitos"
@@ -99,7 +97,6 @@ RSpec.feature "Admin can edit items" do
 
       click_on "Update Item"
 
-      save_and_open_page
       expect(Item.count).to eq(1)
       expect(page).to_not have_content("Item Updated!")
       expect(page).to_not have_content("crujiente y delicioso")

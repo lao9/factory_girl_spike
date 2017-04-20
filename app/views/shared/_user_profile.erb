@@ -1,5 +1,5 @@
-<h1>User Profile for: <%= @display_user.full_name %></h1>
-
+<h1><span class="whiteblock">User Profile for: <%= @display_user.full_name %></span></h1>
+<div class="whiteblock">
 <div class="well">
   <h2>Account Information:</h2>
   <ul style="list-style-type:none">
@@ -12,3 +12,4 @@
 </div>
 
 <%= button_to "Edit Account Information", edit_admin_user_path(@display_user), method: :get if current_user.admin? && (@display_user == current_user) %>
+</div>

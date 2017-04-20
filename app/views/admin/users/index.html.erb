@@ -1,18 +1,16 @@
-<div class="whiteblock">
-  <h1>Users</h1>
+<h1>Users</h1>
 
-  <table class="table">
-    <tr>
-      <th>Full Name</th>
-      <th>Email</th>
-      <th>Role</th>
-      <% @users.each do |user| %>
-    </tr>
-    <td><%= link_to user.full_name, admin_user_path(user) %></td>
-    <td><%=user.email%></td>
-    <td><%=user.role%></td>
-    <tr>
-      <% end %>
-    </tr>
-  </table>
-</div>
+<table class="table">
+  <tr>
+    <th>Full Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <% @users.each do |user| %>
+  </tr>
+  <td><%= link_to user.full_name, admin_user_path(user) %></td>
+  <td><%=user.email%></td>
+  <td><%=user.role%></td>
+  <tr>
+    <% end %>
+  </tr>
+</table>

@@ -1,4 +1,6 @@
-
+.retired {
+  color: #a0030b
+}
 .thumbnail {
   height: 40em;
 }

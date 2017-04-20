@@ -1,28 +1,4 @@
 <h1>Admin Dashboard</h1>
-<% if @orders.bestselling %>
-<h2>Sales Stats</h2>
-<table class="table">
-  <tr>
-    <td><h4>Bestselling item:</h4></td>
-    <td><h2> <%= link_to @orders.bestselling[0].title, item_path(@orders.bestselling[0]) %> </h2></td>
-  </tr>
-  <tr>
-    <td><h4>Total Revenue all time:</h4></td>
-    <td><h2> <%= @orders.total_revenue %> </h2></td>
-  </tr>
-  <tr>
-    <td><h4>Total Revenue last 7 days:</h4></td>
-    <td><h2> <%= @orders.trailing_revenue %> </h2></td>
-  </tr>
-</table>
-<div class="container">
-  <%= form_tag '/send_report', method: :post do %>
-    Email: <%= email_field_tag "Email" %>
-    <%= button_tag "Send Report" %>
-  <% end %>
-</div>
-<% end %>
-
 <h2>All Orders</h2>
 
 <div class="">

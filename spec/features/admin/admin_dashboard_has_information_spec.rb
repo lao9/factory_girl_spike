@@ -73,13 +73,14 @@ RSpec.feature "Admin Dashboard"do
   end
   scenario "analytics are shown" do
     create(:item_with_many_orders)
-    visit admin_dashboard_path
+    visit admin_dashboard_analytics_path
+    save_and_open_page
     expect(page).to have_content("Bestselling item: ")
     expect(page).to have_content("Total Revenue all time: $202.00")
     expect(page).to have_content("Total Revenue last 7 days: $202.00")
   end
   scenario "analytics are sent as an email" do
-    visit admin_dashboard_path
+    visit admin_dashboard_analytics_path
     fill_in "Email", with: "test@test.com"
     click_on "Send Report"
     mail =  ActionMailer::Base.deliveries.last

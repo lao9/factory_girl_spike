@@ -31,7 +31,7 @@ RSpec.feature "Admin can create items" do
       expect(page).to have_content("Pickle")
       expect(page).to have_content("It's green")
       expect(page).to have_content("$4.00")
-      expect(page).to have_xpath("//*[@id='pickle_1']/img")
+      expect(page).to have_xpath("//*[@id='pickle_1']/div/div[2]/img")
     end
 
     scenario "pickles are given a default image" do
@@ -60,7 +60,7 @@ RSpec.feature "Admin can create items" do
       expect(page).to have_content("Double Dill")
       expect(page).to have_content("It's green")
       expect(page).to have_content("$4.00")
-      expect(page).to have_xpath("//*[@id='pickle_2']/img")
+      expect(page).to have_xpath("//*[@id='pickle_2']/div/div[2]/img")
     end
   end
 

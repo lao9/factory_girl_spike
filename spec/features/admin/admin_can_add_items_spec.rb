@@ -20,14 +20,9 @@ RSpec.feature "Admin can create items" do
       fill_in "Title", with: "Pickle"
       fill_in "Description", with: "It's green"
       fill_in "Price", with: 4.00
-      fill_in "item_image_url", with: "http://images.wisegeek.com/cornichons-in-a-jar.jpg"
+      attach_file "Image", "spec/fixtures/capybara.jpg"
 
       check "Briney"
-      # find(:css, "#Category[value='Briney']").set(true)
-
-      # Uncheck
-      # find(:css, "#cityID[value='62']").set(false)
-
 
       click_on "Create Item"
 

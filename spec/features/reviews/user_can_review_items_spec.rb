@@ -19,11 +19,13 @@ RSpec.feature "User can see reviews" do\
   context "user wants to review the pickles" do
     scenario "user fills out form and sees their review" do
       review = create(:review)
-      visit item_path(review.item)
 
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)
         .and_return(review.user)
+
+      visit item_path(review.item)
+
       fill_in "review[body]", with: "Filled in review"
       fill_in "Title", with: "Filled in title"
       select(5, from: "Rating")
@@ -31,7 +33,6 @@ RSpec.feature "User can see reviews" do\
 
       visit item_path(review.item)
 
-      save_and_open_page
       expect(page).to have_content("Reviews: 2")
       expect(page).to have_content("Filled in review")
       expect(page).to have_content("Filled in title")

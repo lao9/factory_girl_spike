@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "WeCanPickleThat" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "We Can Pickle That" %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag "application", :media => "all" %>
@@ -18,6 +18,8 @@
     <%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
 
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+
+    <link rel="icon" href="/assets/pickle_pile.jpg">
 
     <%= javascript_include_tag "application" %>
 

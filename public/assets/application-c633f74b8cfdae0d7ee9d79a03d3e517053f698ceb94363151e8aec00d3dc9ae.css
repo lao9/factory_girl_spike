@@ -20,7 +20,9 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .main-content {
   margin-bottom: 4em ;
 }
-
+.retired {
+  color: #a0030b
+}
 .thumbnail {
   height: 40em;
 }
@@ -56,6 +58,19 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .headshot {
   left: 200px;
   width: 150px;
+}
+
+body {
+  background-image: url('rustic-wall-panels.jpg');
+}
+
+.whiteblock {
+  background-color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  opacity: .8;
 }
 
 .checkbox-list input[type="checkbox"] {

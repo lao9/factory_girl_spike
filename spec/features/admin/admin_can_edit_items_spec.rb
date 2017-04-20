@@ -23,7 +23,7 @@ RSpec.feature "Admin can edit items" do
       fill_in "Title", with: "Jalapeños con conejitos"
       fill_in "Description", with: "crujiente y delicioso"
       fill_in "Price", with: 8.00
-      fill_in "item_image_url", with: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRIMZZtO7DApN3TuAqjUro08TYi9i_6zudmR9Wnfdba5xCfZSIV"
+      attach_file "Image", "spec/fixtures/capybara.jpg"
 
       check "Delicious"
 
@@ -59,7 +59,7 @@ RSpec.feature "Admin can edit items" do
       fill_in "Title", with: ""
       fill_in "Description", with: "crujiente y delicioso"
       fill_in "Price", with: 8.00
-      fill_in "item_image_url", with: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRIMZZtO7DApN3TuAqjUro08TYi9i_6zudmR9Wnfdba5xCfZSIV"
+      attach_file "Image", "spec/fixtures/capybara.jpg"
 
 
       click_on "Update Item"
@@ -91,7 +91,7 @@ RSpec.feature "Admin can edit items" do
       fill_in "Title", with: "Jalapeños con conejitos"
       fill_in "Description", with: ""
       fill_in "Price", with: 8.00
-      fill_in "item_image_url", with: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRIMZZtO7DApN3TuAqjUro08TYi9i_6zudmR9Wnfdba5xCfZSIV"
+      attach_file "Image", "spec/fixtures/capybara.jpg"
 
       check "Delicious"
 
@@ -99,7 +99,6 @@ RSpec.feature "Admin can edit items" do
 
       expect(Item.count).to eq(1)
       expect(page).to_not have_content("Item Updated!")
-      expect(page).to_not have_content("Jalapeños con conejitos")
       expect(page).to_not have_content("crujiente y delicioso")
       expect(page).to_not have_content("$8.00")
     end
@@ -124,7 +123,7 @@ RSpec.feature "Admin can edit items" do
       fill_in "Title", with: "Jalapeños con conejitos"
       fill_in "Description", with: "crujiente y delicioso"
       fill_in "Price", with: ""
-      fill_in "item_image_url", with: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRIMZZtO7DApN3TuAqjUro08TYi9i_6zudmR9Wnfdba5xCfZSIV"
+      attach_file "Image", "spec/fixtures/capybara.jpg"
 
       check "Delicious"
 
@@ -132,7 +131,6 @@ RSpec.feature "Admin can edit items" do
 
       expect(Item.count).to eq(1)
       expect(page).to_not have_content("Item Updated!")
-      expect(page).to_not have_content("Jalapeños con conejitos")
       expect(page).to_not have_content("crujiente y delicioso")
       expect(page).to_not have_content("$8.00")
     end

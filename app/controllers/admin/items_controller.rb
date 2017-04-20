@@ -5,9 +5,9 @@ class Admin::ItemsController < Admin::BaseController
   end
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     if @item.save
-      @item.update(image_url: @item.image.url) unless @item.image.url == "/images/original/missing.png"
+      @item.update_paperclip_image
       flash[:success] = "Pickle Successfully Created!"
       redirect_to @item
     else
@@ -26,9 +26,8 @@ class Admin::ItemsController < Admin::BaseController
 
   def update
     @item = Item.find(params[:id])
-
     if @item.update(item_params)
-      @item.update(image_url: @item.image.url) unless @item.image.url == "/images/original/missing.png"
+      @item.update_paperclip_image
       flash[:success] = "Item Updated!"
       redirect_to admin_items_path
     else
@@ -41,7 +40,7 @@ class Admin::ItemsController < Admin::BaseController
   private
 
   def item_params
-    params.require(:item).permit(:title, :description, :price, :image_url, :image, :category_ids => [])
+    params.require(:item).permit(:title, :description, :price, :image, :category_ids => [])
   end
 
 end

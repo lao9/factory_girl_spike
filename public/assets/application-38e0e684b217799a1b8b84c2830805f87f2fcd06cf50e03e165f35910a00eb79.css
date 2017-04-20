@@ -33,10 +33,40 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 .centered {
   position: absolute;
-  /*left: 50%;*/
   top: 40%;
   width: 80%;
   text-align: center;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+.carousel img {
+  width: 100%;
+}
+
+.carousel-inner {
+  height: 400px;
+}
+
+.carousel-caption {
+  top: 100px;
+}
+
+.headshot {
+  left: 200px;
+  width: 150px;
+}
+
+.checkbox-list input[type="checkbox"] {
+  display: inline-block;
+  width: 10%;
+}
+
+.checkbox-list input[type="checkbox"] + label {
+  display: inline-block;
+  margin-left: 10%;
+  width: 80%;
 }
 /*!
  * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)

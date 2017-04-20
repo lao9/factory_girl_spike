@@ -11,7 +11,7 @@
   <% @items.each do |item| %>
     <tr>
        <td> <%= link_to item.title, item_path(item) %> </td>
-       <td> <%= image_tag "/assets/#{item.image_url}",  height: 100 %> </td>
+       <td> <%= image_tag "#{item.image_url}",  height: 100 %> </td>
        <td> <%= item.description %> </td>
        <td> <%= item.price_format %> </td>
        <td> <% if item.retired %>

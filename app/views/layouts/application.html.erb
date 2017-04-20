@@ -71,15 +71,16 @@
       </div>
     </div>
 
+
     <div class="container main-content">
+      <% flash.each do |name, msg| %>
+      <div class="alert fade in alert-<%= name %> ">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <%= sanitize(msg) %>
+      </div>
+      <% end %>
       <div class="row">
         <div class="col-lg-12">
-          <% flash.each do |name, msg| %>
-            <div class="alert fade in alert-<%= name %> ">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <%= sanitize(msg) %>
-            </div>
-            <% end %>
           </div>
           <div class="well">
             <%= yield %>

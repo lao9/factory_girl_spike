@@ -14,6 +14,8 @@ class OrderMailer < ApplicationMailer
 
   def sales_report(email)
     @orders = Order
+    @items = Item
+    @users = User
     mail(to: email, subject: 'Pickle progress report')
   end
 end

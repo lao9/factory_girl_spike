@@ -1,4 +1,12 @@
 <h1>Admin Analytics</h1>
+
+<div class="container">
+  <%= form_tag '/send_report', method: :post do %>
+    Email: <%= email_field_tag "Email" %>
+    <%= button_tag "Send Report" %>
+  <% end %>
+</div>
+
 <% if @orders.bestselling %>
 <h2>Sales Stats</h2>
 <table class="table">
@@ -31,12 +39,6 @@
     <td><h2> <%= @orders.sales(30) %> </h2></td>
   </tr>
 </table>
-<div class="container">
-  <%= form_tag '/send_report', method: :post do %>
-    Email: <%= email_field_tag "Email" %>
-    <%= button_tag "Send Report" %>
-  <% end %>
-</div>
 <% end %>
 
 <br>

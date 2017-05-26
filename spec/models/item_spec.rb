@@ -1,9 +1,39 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  let(:item) {create(:item)}
-  let(:item_with_categories) {create(:item_with_categories)}
-  let(:item_with_orders) {create(:item_with_orders)}
+  #### Replace the Test Setup up with 3 factories
+  # 1. item
+  # 2. item_with_categories
+  # 3. item_with_orders
+
+  attr_reader :item, :item_with_categories, :item_with_orders
+
+  before :all do
+    @item = Item.create(title: 'Banana',
+      description: "It's a banana",
+      price:        15.0,
+      image_url:    '/fruits/yellow')
+
+    category_1 = Category.create(name: 'Yellow')
+    category_2 = Category.create(name:'Fruits')
+    categories = [category_1, category_2]
+
+    @item_with_categories = @item
+    @item_with_categories.categories << categories
+
+    @user = User.create(first_name: 'Barry',
+      last_name:  'Manilow',
+      email: 'barry123@hotmail.com',
+      role: 'default')
+
+    order_1 = Order.create(user: @user)
+    order_2 = Order.create(user: @user)
+    order_3 = Order.create(user: @user)
+    orders = [order_1, order_2, order_3]
+
+    @item_with_orders = @item
+    @item_with_orders.orders << orders
+  end
 
   describe "validations" do
     it { expect(item).to validate_presence_of(:price)}

@@ -1,9 +1,54 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model  do
-  let(:user) {create(:user)}
-  let(:user_with_orders) {create(:user_with_orders)}
-
+  #### REPLACE WHAT'S BELOW ME ...
+  # Create two factories:
+  # 1. user
+  # 2. user_with_orders
+  attr_reader :user, :user_with_orders
+  before :all do
+    category = Category.create(name:"Vegetable")
+    category.items.create(title: "Orange Cumin Carrots",
+      description: "Pickled carrots with a bit of Eastern spice.",
+      price: 8,
+      image_url: "cumin_carrots.jpg")
+    category.items.create(title: "Ginger Beets",
+      description: "A delicious combination on flavors",
+      price: 7,
+      image_url: "ginger_beets.jpg")
+    category.items.create(title: "Pickled Peppers",
+      description: "Get dat spice and tang.",
+      price: 6,
+      image_url: "ginger_beets.jpg")
+    item1, item2, item3 = category.items
+    @user = User.create(first_name: "Edward",
+      last_name: "Donutbaker",
+      email: "a1@a.com",
+      password: "password")
+    @user_with_orders = User.create(first_name: "Albert",
+      last_name: "Dibbins",
+      email: "a2@a.com",
+      password: "password")
+    @user_with_orders.orders
+      .create.order_items
+      .create(item: item1, quantity: 1, subtotal: item1.price)
+    @user_with_orders.orders
+      .last.order_items
+      .create(item: item2, quantity: 2, subtotal: (item2.price * 2))
+    @user_with_orders.orders
+      .last.order_items
+      .create(item: item3, quantity: 3, subtotal: (item3.price * 2))
+    @user_with_orders.orders
+      .create.order_items
+      .create(item: item1, quantity: 1, subtotal: item1.price)
+    @user_with_orders.orders
+      .last.order_items
+      .create(item: item2, quantity: 2, subtotal: (item2.price * 2))
+    @user_with_orders.orders
+      .last.order_items
+      .create(item: item3, quantity: 3, subtotal: (item3.price * 2))
+  end
+  #### REPLACE WHAT'S ABOVE ME ...
   describe "validations" do
     context "user is valid with all attributes" do
       it { should validate_presence_of(:first_name) }

@@ -63,7 +63,12 @@ RSpec.describe User, type: :model  do
   context "invalid" do
     it "is invalid without non-unique password" do
       redundant_email = user.email
-      user2 = build(:user, email: redundant_email)
+      # REPLACE BELOW TOO...
+      user2 = User.create(first_name: "Diana",
+        last_name: "Crivvens",
+        email: redundant_email,
+        password: "password")
+      # REPLACE ABOVE WITH SOMETHING ...
 
       expect(user2).to_not be_valid
     end

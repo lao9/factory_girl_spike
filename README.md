@@ -106,7 +106,8 @@ Once all set, we'll walk through how to replace our current model tests on this 
 
 ## Additional Resources:
 
-* Faker gem docs:
-* Factory girl docs:
-* Shoulda-Matchers docs:
+* [Faker Gem](https://github.com/stympy/faker)
+* [Factory Girl](https://github.com/thoughtbot/factory_girl/blob/master/GETTING_STARTED.md)
+* [Factory Girl Cheat Sheet](https://gist.github.com/harlow/4208438)
+* [Shoulda-Matchers](https://github.com/thoughtbot/shoulda-matchers)
 * [Nick's rails setup guide](https://gist.github.com/NicholasJacques/6bf2a7733055844e6b5e6a73025726bc)

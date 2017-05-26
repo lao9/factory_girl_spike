@@ -1,9 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
-  before :each do
-    @order = create(:order_with_many_items)
-  end
+  let(:order_with_items) {create(:order_with_items)}
+
   describe "relationships" do
     it "has a many to many relationship with categories" do
       should have_many(:items).through(:order_items)
@@ -11,19 +10,14 @@ RSpec.describe Order, type: :model do
     it "belongs to a user" do
       should belong_to(:user)
     end
-  end
-  describe "methods" do
-    it "can return an order date" do
-      @order.update(created_at: DateTime.new(2017,4,13,12,36))
-      exp_date = "Thursday April 13, 2017,  6:36 AM"
-      expect(@order.order_date).to be_a String
-      expect(@order.order_date).to eq(exp_date)
+    it "has valid factory with user association" do
+      expect(order_with_items).to respond_to(:user)
+      expect(order_with_items.user).to be_a(User)
     end
-    it "can return a total price" do
-      expect(@order.total_price).to eq("$%.2f" % (OrderItem.sum(:subtotal)))
-    end
-    it "can return a total quantity" do
-      expect(@order.total_quantity).to eq(OrderItem.sum(:quantity))
+    it "has valid factory with items association" do
+      expect(order_with_items).to respond_to(:items)
+      expect(order_with_items.items.count).to eq(3)
+      expect(order_with_items.items.first).to be_an(Item)
     end
   end
 end

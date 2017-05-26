@@ -65,8 +65,8 @@ User.last.orders.update_all(created_at: 2.years.ago)
 Order.all.sample(3).each do |order|
   order.update(created_at: (Time.now - 30.days))
 end
-
-Review.create(title: "Amazing", body: "I can't even describe the luscious crunch of this pickled item.", rating: 5, user_id: 2, item_id: 1, created_at: 90.days.ago)
-Review.create(title: "Meh", body: "Whatever.", rating: 2, user_id: 2, item_id: 1, created_at: 20.days.ago)
-Review.create(title: "Bad", body: "Not good.", rating: 1, user_id: 4, item_id: 4)
-Review.create(title: "Disappointed", body: "When I opened this jar of pickles I nearly killed my family.", rating: 1, user_id: 3, item_id: 13, created_at: 2.days.ago)
+# 
+# Review.create(title: "Amazing", body: "I can't even describe the luscious crunch of this pickled item.", rating: 5, user_id: 2, item_id: 1, created_at: 90.days.ago)
+# Review.create(title: "Meh", body: "Whatever.", rating: 2, user_id: 2, item_id: 1, created_at: 20.days.ago)
+# Review.create(title: "Bad", body: "Not good.", rating: 1, user_id: 4, item_id: 4)
+# Review.create(title: "Disappointed", body: "When I opened this jar of pickles I nearly killed my family.", rating: 1, user_id: 3, item_id: 13, created_at: 2.days.ago)

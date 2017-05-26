@@ -39,11 +39,11 @@ RSpec.describe User, type: :model  do
       expect(user_with_orders.orders.count).to eq(2)
       expect(user_with_orders.orders.first).to be_a(Order)
     end
-    it "should have orders with many items" do
+    it "has valid factory with items associated with its orders" do
       order = user_with_orders.orders.first
 
       expect(order).to respond_to(:items)
-      expect(order.items.count).to eq(2)
+      expect(order.items.count).to eq(3)
       expect(order.items.first).to be_an(Item)
     end
   end

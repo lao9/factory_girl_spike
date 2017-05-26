@@ -9,7 +9,7 @@ RSpec.describe Item, type: :model do
   attr_reader :item, :item_with_categories, :item_with_orders
 
   before :all do
-    @item = Item.create(title:       'Banana',
+    @item = Item.create(title: 'Banana',
       description: "It's a banana",
       price:        15.0,
       image_url:    '/fruits/yellow')
